@@ -9,3 +9,5 @@
 #else
 	#error Hazel only supports Windows!
 #endif // PENGINE_PLATFORM_WINDOWS
+
+#define BIT(x) (1 << x)
