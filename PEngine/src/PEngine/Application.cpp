@@ -1,10 +1,15 @@
+#include "pepch.h"
 #include "Application.h"
+
+#include "PEngine/Events/ApplicationEvent.h"
+
+#include "GLFW/glfw3.h"
 
 namespace PEngine
 {
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application()
@@ -14,6 +19,9 @@ namespace PEngine
 
 	void Application::Run()
 	{
-		while (true);
+		while (m_Running)
+		{
+			m_Window->OnUpdate();
+		}
 	}
 }
