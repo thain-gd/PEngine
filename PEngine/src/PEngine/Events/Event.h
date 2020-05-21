@@ -2,9 +2,6 @@
 
 #include "PEngine/Core.h"
 
-#include <string>
-#include <functional>
-
 namespace PEngine
 {
 	enum class EventType

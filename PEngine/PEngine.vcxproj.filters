@@ -7,6 +7,12 @@
     <Filter Include="PEngine\Events">
       <UniqueIdentifier>{4F56315D-3B24-2563-24B8-9589102501C8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platforms">
+      <UniqueIdentifier>{DDACA145-4917-56BC-9255-0762FEFE3311}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platforms\Windows">
+      <UniqueIdentifier>{17E40808-83FA-069E-CC71-92BF38C7D725}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\PEngine.h" />
@@ -34,6 +40,13 @@
     <ClInclude Include="src\PEngine\Log.h">
       <Filter>PEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\PEngine\Window.h">
+      <Filter>PEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platforms\Windows\WindowsWindow.h">
+      <Filter>Platforms\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pepch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\PEngine\Application.cpp">
@@ -42,5 +55,9 @@
     <ClCompile Include="src\PEngine\Log.cpp">
       <Filter>PEngine</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platforms\Windows\WindowsWindow.cpp">
+      <Filter>Platforms\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pepch.cpp" />
   </ItemGroup>
 </Project>
