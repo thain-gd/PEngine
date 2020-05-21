@@ -2,6 +2,7 @@
 
 #include "Core.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
 
 namespace PEngine
 {
@@ -27,10 +28,10 @@ namespace PEngine
 #define PENGINE_CORE_FATAL(...)   ::PEngine::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 
 // Client log macros
-#define PENGINE_TRACE(...)   ::PEngine::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define PENGINE_INFO(...)    ::PEngine::Log::GetClientLogger()->info(__VA_ARGS__)
-#define PENGINE_WARN(...)    ::PEngine::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define PENGINE_ERROR(...)   ::PEngine::Log::GetClientLogger()->error(__VA_ARGS__)
-#define PENGINE_FATAL(...)   ::PEngine::Log::GetClientLogger()->fatal(__VA_ARGS__)
+#define PENGINE_TRACE(...)        ::PEngine::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define PENGINE_INFO(...)         ::PEngine::Log::GetClientLogger()->info(__VA_ARGS__)
+#define PENGINE_WARN(...)         ::PEngine::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define PENGINE_ERROR(...)        ::PEngine::Log::GetClientLogger()->error(__VA_ARGS__)
+#define PENGINE_FATAL(...)        ::PEngine::Log::GetClientLogger()->fatal(__VA_ARGS__)
 
 
