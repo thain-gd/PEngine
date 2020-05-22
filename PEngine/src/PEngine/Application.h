@@ -2,8 +2,9 @@
 
 #include "Core.h"
 #include "Events/Event.h"
-#include "PEngine/Events/ApplicationEvent.h"
+#include "Events/ApplicationEvent.h"
 #include "Window.h"
+#include "LayerStack.h"
 
 namespace PEngine {
 
@@ -12,6 +13,7 @@ namespace PEngine {
 	private:
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
+		LayerStack m_LayerStack;
 
 		bool OnWindowClosed(WindowCloseEvent& e);
 
@@ -22,6 +24,9 @@ namespace PEngine {
 		void Run();
 
 		void OnEvent(Event& e);
+
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
 	};
 
 	//To be define in client

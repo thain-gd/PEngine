@@ -63,14 +63,17 @@ project "PEngine"
 
     filter "configurations:Debug"
         defines "PENGINE_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "PENGINE_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "PENGINE_DIST"
+        buildoptions "/MD"
         optimize "On"
 
 project "SandBox"
@@ -110,12 +113,15 @@ project "SandBox"
 
     filter "configurations:Debug"
         defines "PENGINE_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
 
     filter "configurations:Release"
         defines "PENGINE_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "PENGINE_DIST"
+        buildoptions "/MD"
         optimize "On"
