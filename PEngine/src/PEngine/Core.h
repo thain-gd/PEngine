@@ -15,8 +15,8 @@
 #endif
 
 #ifdef PENGINE_ENABLE_ASSERTS
-	#define PENGINE_ASSERT(x, ...) { if (!x)) { PENGINE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-	#define PENGINE_CORE_ASSERT(x, ...) { if (!x)) { PENGINE_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define PENGINE_ASSERT(x, ...) { if (!(x)) { PENGINE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define PENGINE_CORE_ASSERT(x, ...) { if (!(x)) { PENGINE_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 #else
 	#define PENGINE_ASSERT(x, ...)
 	#define PENGINE_CORE_ASSERT(x, ...)
