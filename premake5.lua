@@ -12,8 +12,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "PEngine/vendor/GLFW/include"
+IncludeDir["Glad"] = "PEngine/vendor/Glad/include"
 
 include "PEngine/vendor/GLFW"
+include "PEngine/vendor/Glad"
 
 project "PEngine"
     location "PEngine"
@@ -36,12 +38,14 @@ project "PEngine"
     {
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}"
     }
 
     links
     {
         "GLFW",
+        "Glad",
         "opengl32.lib"
     }
 
@@ -53,7 +57,8 @@ project "PEngine"
         defines
         {
             "PENGINE_PLATFORM_WINDOWS",
-            "PENGINE_BUILD_DLL"
+            "PENGINE_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
         }
 
         postbuildcommands
