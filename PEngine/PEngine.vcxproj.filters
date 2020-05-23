@@ -7,8 +7,14 @@
     <Filter Include="PEngine\Events">
       <UniqueIdentifier>{4F56315D-3B24-2563-24B8-9589102501C8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PEngine\ImGui">
+      <UniqueIdentifier>{35FE7277-A1BE-EEAD-6AF9-372BD678338A}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platforms">
       <UniqueIdentifier>{DDACA145-4917-56BC-9255-0762FEFE3311}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platforms\OpenGL">
+      <UniqueIdentifier>{719BB998-5D94-D8EA-86C6-BD6F721EB8F6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platforms\Windows">
       <UniqueIdentifier>{17E40808-83FA-069E-CC71-92BF38C7D725}</UniqueIdentifier>
@@ -37,6 +43,9 @@
     <ClInclude Include="src\PEngine\Events\MouseEvent.h">
       <Filter>PEngine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\PEngine\ImGui\ImGuiLayer.h">
+      <Filter>PEngine\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\PEngine\Layer.h">
       <Filter>PEngine</Filter>
     </ClInclude>
@@ -49,6 +58,9 @@
     <ClInclude Include="src\PEngine\Window.h">
       <Filter>PEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platforms\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platforms\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platforms\Windows\WindowsWindow.h">
       <Filter>Platforms\Windows</Filter>
     </ClInclude>
@@ -58,6 +70,9 @@
     <ClCompile Include="src\PEngine\Application.cpp">
       <Filter>PEngine</Filter>
     </ClCompile>
+    <ClCompile Include="src\PEngine\ImGui\ImGuiLayer.cpp">
+      <Filter>PEngine\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="src\PEngine\Layer.cpp">
       <Filter>PEngine</Filter>
     </ClCompile>
@@ -66,6 +81,9 @@
     </ClCompile>
     <ClCompile Include="src\PEngine\Log.cpp">
       <Filter>PEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platforms\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platforms\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platforms\Windows\WindowsWindow.cpp">
       <Filter>Platforms\Windows</Filter>
