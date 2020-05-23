@@ -13,7 +13,7 @@ namespace PEngine
 		int m_KeyCode;
 
 	public:
-		inline int GetKeyCode() { return m_KeyCode; }
+		int GetKeyCode() { return m_KeyCode; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyBoard | EventCategoryInput)
 	};
@@ -27,7 +27,7 @@ namespace PEngine
 		KeyPressedEvent(int keycode, int repeatCount)
 			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 
-		inline int GetRepeatCount() { return m_RepeatCount; }
+		int GetRepeatCount() { return m_RepeatCount; }
 
 		std::string ToString() const override
 		{
@@ -48,7 +48,7 @@ namespace PEngine
 		KeyReleasedEvent(int keycode)
 			: KeyEvent(keycode) {}
 		
-		inline int GetRepeatCount() { return m_RepeatCount; }
+		int GetRepeatCount() { return m_RepeatCount; }
 
 		std::string ToString() const override
 		{

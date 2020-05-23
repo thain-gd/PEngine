@@ -19,6 +19,6 @@ namespace PEngine
 		virtual void OnUpdate() {}
 		virtual void OnEvent(Event& event) {}
 
-		inline const std::string& GetName() { return m_DebugName; }
+		const std::string& GetName() { return m_DebugName; }
 	};
 }
