@@ -1,5 +1,6 @@
 workspace "PEngine"
     architecture "x64" --Platform
+    startproject "SandBox"
 
     configurations
     {
@@ -23,6 +24,7 @@ project "PEngine"
     location "PEngine"
     kind "SharedLib"
     language "C++"
+    staticruntime "off"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -55,7 +57,6 @@ project "PEngine"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
         systemversion "latest"
 
         defines
@@ -72,23 +73,24 @@ project "PEngine"
 
     filter "configurations:Debug"
         defines "PENGINE_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
 
     filter "configurations:Release"
         defines "PENGINE_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
 
     filter "configurations:Dist"
         defines "PENGINE_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
 
 project "SandBox"
     location "SandBox"
     kind "ConsoleApp"
     language "C++"
+    staticruntime "off"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -112,7 +114,6 @@ project "SandBox"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
         systemversion "latest"
 
         defines
@@ -122,15 +123,15 @@ project "SandBox"
 
     filter "configurations:Debug"
         defines "PENGINE_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
 
     filter "configurations:Release"
         defines "PENGINE_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
 
     filter "configurations:Dist"
         defines "PENGINE_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
