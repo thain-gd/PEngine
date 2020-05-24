@@ -158,11 +158,13 @@
     <ClInclude Include="src\PEngine\Events\KeyEvent.h" />
     <ClInclude Include="src\PEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\PEngine\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\PEngine\Input.h" />
     <ClInclude Include="src\PEngine\Layer.h" />
     <ClInclude Include="src\PEngine\LayerStack.h" />
     <ClInclude Include="src\PEngine\Log.h" />
     <ClInclude Include="src\PEngine\Window.h" />
     <ClInclude Include="src\Platforms\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platforms\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platforms\Windows\WindowsWindow.h" />
     <ClInclude Include="src\pepch.h" />
   </ItemGroup>
@@ -173,6 +175,7 @@
     <ClCompile Include="src\PEngine\LayerStack.cpp" />
     <ClCompile Include="src\PEngine\Log.cpp" />
     <ClCompile Include="src\Platforms\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platforms\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platforms\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\pepch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

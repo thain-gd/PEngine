@@ -22,7 +22,6 @@ class SandBox : public PEngine::Application
 public:
 	SandBox() 
 	{
-		PushLayer(new ExampleLayer());
 		PushOverlay(new PEngine::ImGuiLayer());
 	}
 
