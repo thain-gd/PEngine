@@ -8,12 +8,13 @@ public:
 
 	void OnUpdate() override
 	{
-		PENGINE_INFO("ExampleLayer::Update");
+		
+	}
 	}
 
 	void OnEvent(PEngine::Event& e) override
 	{
-		PENGINE_TRACE("{0}", e);
+
 	}
 };
 
@@ -22,7 +23,7 @@ class SandBox : public PEngine::Application
 public:
 	SandBox() 
 	{
-		PushOverlay(new PEngine::ImGuiLayer());
+		PushLayer(new ExampleLayer());
 	}
 
 	~SandBox() {}
