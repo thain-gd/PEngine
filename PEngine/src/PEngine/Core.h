@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef PENGINE_PLATFORM_WINDOWS
+#if PENGINE_DYNAMIC_LINK
 	#ifdef PENGINE_BUILD_DLL
 		#define PENGINE_API __declspec(dllexport)
 	#else
 		#define PENGINE_API __declspec(dllimport)
 	#endif
+#else
+	#define PENGINE_API
+#endif
 #else
 	#error Hazel only supports Windows!
 #endif // PENGINE_PLATFORM_WINDOWS
