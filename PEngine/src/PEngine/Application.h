@@ -2,15 +2,16 @@
 
 #include "Core.h"
 
-#include "Events/Event.h"
-#include "Events/ApplicationEvent.h"
 #include "Window.h"
 #include "LayerStack.h"
+#include "Events/Event.h"
+#include "Events/ApplicationEvent.h"
+
 #include "ImGui/ImGuiLayer.h"
 
 namespace PEngine {
 
-	class PENGINE_API Application
+	class Application
 	{
 	private:
 		static Application* s_Instance;

@@ -20,7 +20,7 @@ namespace PEngine
 	};
 
 	// Interface representing a desktop system based window
-	class PENGINE_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;

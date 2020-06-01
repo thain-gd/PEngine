@@ -4,7 +4,7 @@
 
 namespace PEngine
 {
-	class PENGINE_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	private:
 		float m_MouseX, m_MouseY;
@@ -27,7 +27,7 @@ namespace PEngine
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	};
 
-	class PENGINE_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	private:
 		float m_XOffset, m_YOffset;
@@ -50,7 +50,7 @@ namespace PEngine
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	};
 
-	class PENGINE_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	protected:
 		MouseButtonEvent(int button)
@@ -64,7 +64,7 @@ namespace PEngine
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	};
 
-	class PENGINE_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button)
@@ -80,7 +80,7 @@ namespace PEngine
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class PENGINE_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button)
