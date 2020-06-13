@@ -6,6 +6,8 @@
 #include "PEngine/Log.h"
 #include "PEngine/Layer.h"
 
+#include "PEngine/Core/Timestep.h"
+
 #include "PEngine/Input.h"
 #include "PEngine/KeyCodes.h"
 #include "PEngine/MouseButtonCodes.h"

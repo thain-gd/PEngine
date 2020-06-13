@@ -2,6 +2,7 @@
 
 #include "PEngine/Core.h"
 #include "PEngine/Events/Event.h"
+#include "PEngine/Core/Timestep.h"
 
 namespace PEngine
 {
@@ -16,7 +17,7 @@ namespace PEngine
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

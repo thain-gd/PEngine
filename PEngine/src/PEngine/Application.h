@@ -7,6 +7,8 @@
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
 
+#include "Core/Timestep.h"
+
 #include "ImGui/ImGuiLayer.h"
 
 namespace PEngine {
@@ -20,6 +22,7 @@ namespace PEngine {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 
 		bool OnWindowClosed(WindowCloseEvent& e);
 
