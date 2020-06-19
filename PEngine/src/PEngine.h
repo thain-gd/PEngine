@@ -20,6 +20,7 @@
 
 #include "PEngine/Renderer/Buffer.h"
 #include "PEngine/Renderer/Shader.h"
+#include "PEngine/Renderer/Texture.h"
 #include "PEngine/Renderer/VertexArray.h"
 
 #include "PEngine/Renderer/Camera.h"

@@ -16,6 +16,7 @@ IncludeDir["GLFW"] = "PEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "PEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "PEngine/vendor/imgui"
 IncludeDir["glm"] = "PEngine/vendor/glm"
+IncludeDir["stb_image"] = "PEngine/vendor/stb_image"
 
 include "PEngine/vendor/GLFW"
 include "PEngine/vendor/Glad"
@@ -38,6 +39,8 @@ project "PEngine"
     {
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/stb_image/**.h",
+        "%{prj.name}/vendor/stb_image/**.cpp",
         "%{prj.name}/vendor/glm/glm/**.hpp",
         "%{prj.name}/vendor/glm/glm/**.inl"
     }
@@ -54,7 +57,8 @@ project "PEngine"
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
-        "%{IncludeDir.glm}"
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.stb_image}"
     }
 
     links
