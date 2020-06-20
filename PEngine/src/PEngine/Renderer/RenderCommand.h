@@ -10,6 +10,11 @@ namespace PEngine
 		static RendererAPI* s_RendererAPI;
 
 	public:
+		static void Init()
+		{
+			s_RendererAPI->Init();
+		}
+
 		static void SetClearColor(const glm::vec4& color)
 		{
 			s_RendererAPI->SetClearColor(color);
