@@ -3,6 +3,9 @@
 #include "PEngine/Renderer/Shader.h"
 #include <glm/glm.hpp>
 
+// TO-DO: Remove this after removing OpenGLShader explicit cast in SandBoxApp
+typedef unsigned int GLenum;
+
 namespace PEngine
 {
 	class OpenGLShader : public Shader
@@ -10,7 +13,12 @@ namespace PEngine
 	private:
 		uint32_t m_RendererID;
 
+		std::string ReadFile(const std::string& filepath);
+		std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
+		void Compile(const std::unordered_map<GLenum, std::string>& shaderSources);
+
 	public:
+		OpenGLShader(const std::string& filepath);
 		OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
 		~OpenGLShader();
 
