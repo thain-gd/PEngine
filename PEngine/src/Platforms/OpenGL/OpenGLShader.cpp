@@ -2,6 +2,7 @@
 #include "OpenGLShader.h"
 
 #include <fstream>
+#include <filesystem>
 #include <glad/glad.h>
 
 #include <glm/gtc/type_ptr.hpp>
@@ -24,9 +25,13 @@ namespace PEngine
 		std::string source = ReadFile(filepath);
 		auto shaderSources = PreProcess(source);
 		Compile(shaderSources);
+
+		std::filesystem::path path = filepath;
+		m_Name = path.stem().string();
 	}
 
-	OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
+	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc)
+		: m_Name(name)
 	{
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSrc;
@@ -165,6 +170,11 @@ namespace PEngine
 	void OpenGLShader::Unbind() const
 	{
 		glUseProgram(0);
+	}
+
+	const std::string& OpenGLShader::GetName() const
+	{
+		return m_Name;
 	}
 
 	void OpenGLShader::UploadUniformInt(const std::string& name, int value)
