@@ -24,6 +24,8 @@
 #include "PEngine/Renderer/VertexArray.h"
 
 #include "PEngine/Renderer/Camera.h"
+#include "PEngine/Renderer/OrthographicCameraController.h"
+
 // ----------------------------------
 
 // ---Entry Point--------------------
