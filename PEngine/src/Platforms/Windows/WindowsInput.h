@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PEngine/Input.h"
+#include "PEngine/Core/Input.h"
 
 namespace PEngine
 {

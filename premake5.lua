@@ -1,5 +1,5 @@
 workspace "PEngine"
-    architecture "x64" --Platform
+    architecture "x64"
     startproject "SandBox"
 
     configurations

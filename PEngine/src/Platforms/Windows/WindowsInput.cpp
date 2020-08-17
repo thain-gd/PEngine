@@ -1,7 +1,7 @@
 #include "pepch.h"
 #include "WindowsInput.h"
 
-#include "PEngine/Application.h"
+#include "PEngine/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace PEngine

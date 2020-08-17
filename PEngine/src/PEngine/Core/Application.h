@@ -4,12 +4,12 @@
 
 #include "Window.h"
 #include "LayerStack.h"
-#include "Events/Event.h"
-#include "Events/ApplicationEvent.h"
+#include "PEngine/Events/Event.h"
+#include "PEngine/Events/ApplicationEvent.h"
 
-#include "Core/Timestep.h"
+#include "PEngine/Core/Timestep.h"
 
-#include "ImGui/ImGuiLayer.h"
+#include "PEngine/ImGui/ImGuiLayer.h"
 
 namespace PEngine {
 
@@ -21,10 +21,12 @@ namespace PEngine {
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
+		bool m_Minimized = false;
 		LayerStack m_LayerStack;
 		float m_LastFrameTime = 0.0f;
 
-		bool OnWindowClosed(WindowCloseEvent& e);
+		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 
 	public:
 		static Application& Instance() { return *s_Instance; }

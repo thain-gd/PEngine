@@ -2,7 +2,7 @@
 
 #include "pepch.h"
 
-#include "PEngine/Core.h"
+#include "PEngine/Core/Core.h"
 #include "PEngine/Events/Event.h"
 
 namespace PEngine

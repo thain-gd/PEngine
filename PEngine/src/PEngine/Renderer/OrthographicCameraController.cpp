@@ -1,8 +1,8 @@
 #include "pepch.h"
 #include "OrthographicCameraController.h"
 
-#include "PEngine/Input.h"
-#include "PEngine/KeyCodes.h"
+#include "PEngine/Core/Input.h"
+#include "PEngine/Core/KeyCodes.h"
 
 namespace PEngine
 {

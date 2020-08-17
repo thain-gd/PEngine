@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "PEngine/Core.h"
+#include "PEngine/Core/Core.h"
 
 namespace PEngine
 {

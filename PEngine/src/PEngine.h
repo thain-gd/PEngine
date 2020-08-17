@@ -2,15 +2,15 @@
 
 // For use by PEngine applications
 
-#include "PEngine/Application.h"
-#include "PEngine/Log.h"
-#include "PEngine/Layer.h"
+#include "PEngine/Core/Application.h"
+#include "PEngine/Core/Log.h"
+#include "PEngine/Core/Layer.h"
 
 #include "PEngine/Core/Timestep.h"
 
-#include "PEngine/Input.h"
-#include "PEngine/KeyCodes.h"
-#include "PEngine/MouseButtonCodes.h"
+#include "PEngine/Core/Input.h"
+#include "PEngine/Core/KeyCodes.h"
+#include "PEngine/Core/MouseButtonCodes.h"
 
 #include "PEngine/ImGui/ImGuiLayer.h"
 
@@ -29,5 +29,5 @@
 // ----------------------------------
 
 // ---Entry Point--------------------
-#include "PEngine/EntryPoint.h"
+#include "PEngine/Core/EntryPoint.h"
 // ----------------------------------

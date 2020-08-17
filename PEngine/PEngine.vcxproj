@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -19,26 +19,26 @@
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>PEngine</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -141,21 +141,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\PEngine.h" />
-    <ClInclude Include="src\PEngine\Application.h" />
-    <ClInclude Include="src\PEngine\Core.h" />
+    <ClInclude Include="src\PEngine\Core\Application.h" />
+    <ClInclude Include="src\PEngine\Core\Core.h" />
+    <ClInclude Include="src\PEngine\Core\EntryPoint.h" />
+    <ClInclude Include="src\PEngine\Core\Input.h" />
+    <ClInclude Include="src\PEngine\Core\KeyCodes.h" />
+    <ClInclude Include="src\PEngine\Core\Layer.h" />
+    <ClInclude Include="src\PEngine\Core\LayerStack.h" />
+    <ClInclude Include="src\PEngine\Core\Log.h" />
+    <ClInclude Include="src\PEngine\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\PEngine\Core\Timestep.h" />
-    <ClInclude Include="src\PEngine\EntryPoint.h" />
+    <ClInclude Include="src\PEngine\Core\Window.h" />
     <ClInclude Include="src\PEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\PEngine\Events\Event.h" />
     <ClInclude Include="src\PEngine\Events\KeyEvent.h" />
     <ClInclude Include="src\PEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\PEngine\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\PEngine\Input.h" />
-    <ClInclude Include="src\PEngine\KeyCodes.h" />
-    <ClInclude Include="src\PEngine\Layer.h" />
-    <ClInclude Include="src\PEngine\LayerStack.h" />
-    <ClInclude Include="src\PEngine\Log.h" />
-    <ClInclude Include="src\PEngine\MouseButtonCodes.h" />
     <ClInclude Include="src\PEngine\Renderer\Buffer.h" />
     <ClInclude Include="src\PEngine\Renderer\Camera.h" />
     <ClInclude Include="src\PEngine\Renderer\GraphicsContext.h" />
@@ -166,7 +167,6 @@
     <ClInclude Include="src\PEngine\Renderer\Shader.h" />
     <ClInclude Include="src\PEngine\Renderer\Texture.h" />
     <ClInclude Include="src\PEngine\Renderer\VertexArray.h" />
-    <ClInclude Include="src\PEngine\Window.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGLRendererAPI.h" />
@@ -587,12 +587,12 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\PEngine\Application.cpp" />
+    <ClCompile Include="src\PEngine\Core\Application.cpp" />
+    <ClCompile Include="src\PEngine\Core\Layer.cpp" />
+    <ClCompile Include="src\PEngine\Core\LayerStack.cpp" />
+    <ClCompile Include="src\PEngine\Core\Log.cpp" />
     <ClCompile Include="src\PEngine\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\PEngine\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\PEngine\Layer.cpp" />
-    <ClCompile Include="src\PEngine\LayerStack.cpp" />
-    <ClCompile Include="src\PEngine\Log.cpp" />
     <ClCompile Include="src\PEngine\Renderer\Buffer.cpp" />
     <ClCompile Include="src\PEngine\Renderer\Camera.cpp" />
     <ClCompile Include="src\PEngine\Renderer\OrthographicCameraController.cpp" />
