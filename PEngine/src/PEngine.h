@@ -16,6 +16,7 @@
 
 // ---Renderer--------------------
 #include "PEngine/Renderer/Renderer.h"
+#include "PEngine/Renderer/Renderer2D.h"
 #include "PEngine/Renderer/RenderCommand.h"
 
 #include "PEngine/Renderer/Buffer.h"

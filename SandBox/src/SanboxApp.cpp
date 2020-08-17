@@ -1,12 +1,12 @@
 #include <PEngine.h>
 #include <PEngine/Core/EntryPoint.h>
 
-#include "Platforms/OpenGL/OpenGLShader.h"
-
 #include "imgui/imgui.h"
 
 #include "glm/gtc/matrix_transform.hpp"
 #include <glm/gtc/type_ptr.hpp>
+
+#include "Sandbox2D.h"
 
 class ExampleLayer : public PEngine::Layer
 {
@@ -144,8 +144,8 @@ public:
 
 		m_Texture = PEngine::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_LogoTexture = PEngine::Texture2D::Create("assets/textures/ChernoLogo.png");
-		std::dynamic_pointer_cast<PEngine::OpenGLShader>(textureShader)->Bind();
-		std::dynamic_pointer_cast<PEngine::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
+		textureShader->Bind();
+		//textureShader->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(PEngine::Timestep ts) override
@@ -164,8 +164,8 @@ public:
 		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
 		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
 
-		std::dynamic_pointer_cast<PEngine::OpenGLShader>(m_FlatColorShader)->Bind();
-		std::dynamic_pointer_cast<PEngine::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+		m_FlatColorShader->Bind();
+		m_FlatColorShader->SetFloat3("u_Color", m_SquareColor);
 
 		for (int y = 0; y < 20; y++)
 		{
@@ -217,7 +217,8 @@ class SandBox : public PEngine::Application
 public:
 	SandBox() 
 	{
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~SandBox() {}
