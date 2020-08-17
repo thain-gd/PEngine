@@ -1,4 +1,5 @@
 #include <PEngine.h>
+#include <PEngine/Core/EntryPoint.h>
 
 #include "Platforms/OpenGL/OpenGLShader.h"
 

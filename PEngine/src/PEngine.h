@@ -27,7 +27,3 @@
 #include "PEngine/Renderer/OrthographicCameraController.h"
 
 // ----------------------------------
-
-// ---Entry Point--------------------
-#include "PEngine/Core/EntryPoint.h"
-// ----------------------------------
