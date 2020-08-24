@@ -1390,6 +1390,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\PEngine\Renderer\Renderer2D.h" />
+    <ClInclude Include="src\PEngine\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\PEngine\Core\Application.cpp">

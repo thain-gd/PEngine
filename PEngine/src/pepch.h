@@ -15,6 +15,8 @@
 
 #include "PEngine/Core/Log.h"
 
+#include "PEngine/Debug/Instrumentor.h"
+
 #ifdef PENGINE_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif // PENGINE_PLATFORM_WINDOWS

@@ -352,3 +352,6 @@ MigrationBackup/
 
 # 3rd party vendors
 !vendor/bin
+
+# Debug Libraries for PEngine
+!PEngine/src/PEngine/Debug

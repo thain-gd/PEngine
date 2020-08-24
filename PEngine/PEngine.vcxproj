@@ -152,6 +152,7 @@
     <ClInclude Include="src\PEngine\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\PEngine\Core\Timestep.h" />
     <ClInclude Include="src\PEngine\Core\Window.h" />
+    <ClInclude Include="src\PEngine\Debug\Instrumentor.h" />
     <ClInclude Include="src\PEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\PEngine\Events\Event.h" />
     <ClInclude Include="src\PEngine\Events\KeyEvent.h" />

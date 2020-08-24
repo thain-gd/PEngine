@@ -7,7 +7,6 @@ extern PEngine::Application* PEngine::CreateApplication();
 int main(int argc, char** argv)
 {
 	PEngine::Log::Init();
-	PE_CORE_WARN("Initalized Log!");
 
 	auto app = PEngine::CreateApplication();
 	app->Run();
