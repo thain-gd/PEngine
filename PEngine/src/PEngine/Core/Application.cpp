@@ -14,6 +14,8 @@ namespace PEngine
 
 	Application::Application()
 	{
+		PE_PROFILE_FUNCTION();
+
 		PE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
@@ -28,6 +30,8 @@ namespace PEngine
 
 	void Application::OnEvent(Event& e)
 	{
+		PE_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
@@ -48,6 +52,8 @@ namespace PEngine
 
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+		PE_PROFILE_FUNCTION();
+
 		if (e.GetWidth() == 0 || e.GetHeight() == 0)
 		{
 			m_Minimized = true;
@@ -62,27 +68,42 @@ namespace PEngine
 
 	Application::~Application()
 	{
+		PE_PROFILE_FUNCTION();
 
+		//Renderer::Shutdown
 	}
 
 	void Application::Run()
 	{
+		PE_PROFILE_FUNCTION();
+
 		while (m_Running)
 		{
+			PE_PROFILE_SCOPE("RunLoop");
+
 			float time = (float)glfwGetTime();
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time; //temporary (Platform::GetTime)
 
 			if (!m_Minimized)
 			{
-				for (Layer* layer : m_LayerStack)
-					layer->OnUpdate(timestep);
+				{
+					PE_PROFILE_SCOPE("LayerStack OnUpdate");
+
+					for (Layer* layer : m_LayerStack)
+						layer->OnUpdate(timestep);
+				}
+
+				m_ImGuiLayer->Begin();
+				{
+					PE_PROFILE_SCOPE("LayerStack OnImGuiRender");
+
+					for (Layer* layer : m_LayerStack)
+						layer->OnImGuiRender();
+				}
+				m_ImGuiLayer->End();
 			}
 			
-			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
-			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
 		}
@@ -90,12 +111,16 @@ namespace PEngine
 
 	void Application::PushLayer(Layer* layer)
 	{
+		PE_PROFILE_FUNCTION();
+
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
+		PE_PROFILE_FUNCTION();
+
 		m_LayerStack.PushOverlay(layer);
 		layer->OnAttach();
 	}

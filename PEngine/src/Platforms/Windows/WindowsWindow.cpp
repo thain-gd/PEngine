@@ -23,11 +23,15 @@ namespace PEngine
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
+		PE_PROFILE_FUNCTION();
+
 		Init(props);
 	}
 
 	void WindowsWindow::Init(const WindowProps& props)
 	{
+		PE_PROFILE_FUNCTION();
+		
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
@@ -143,22 +147,30 @@ namespace PEngine
 
 	WindowsWindow::~WindowsWindow()
 	{
+		PE_PROFILE_FUNCTION();
+
 		ShutDown();
 	}
 
 	void WindowsWindow::ShutDown()
 	{
+		PE_PROFILE_FUNCTION();
+
 		glfwDestroyWindow(m_Window);
 	}
 
 	void WindowsWindow::OnUpdate()
 	{
+		PE_PROFILE_FUNCTION();
+
 		glfwPollEvents();
 		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
+		PE_PROFILE_FUNCTION();
+
 		if (enabled)
 			glfwSwapInterval(1);
 		else

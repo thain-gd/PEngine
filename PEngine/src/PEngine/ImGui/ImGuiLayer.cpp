@@ -26,6 +26,8 @@ namespace PEngine
 
 	void ImGuiLayer::OnAttach()
 	{
+		PE_PROFILE_FUNCTION();
+
 		// Setup Dear ImGui context
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -56,6 +58,8 @@ namespace PEngine
 
 	void ImGuiLayer::OnDetach()
 	{
+		PE_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
@@ -63,6 +67,8 @@ namespace PEngine
 
 	void ImGuiLayer::Begin()
 	{
+		PE_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
@@ -70,6 +76,8 @@ namespace PEngine
 
 	void ImGuiLayer::End()
 	{
+		PE_PROFILE_FUNCTION();
+
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Instance();
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());

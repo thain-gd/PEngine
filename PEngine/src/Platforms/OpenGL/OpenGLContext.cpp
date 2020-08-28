@@ -14,6 +14,8 @@ namespace PEngine
 
 	void OpenGLContext::Init()
 	{
+		PE_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		PE_CORE_ASSERT(status, "Failed to initialized Glad!");
@@ -26,6 +28,8 @@ namespace PEngine
 
 	void OpenGLContext::SwapBuffers()
 	{
+		PE_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_WindowHandle);
 	}
 }
