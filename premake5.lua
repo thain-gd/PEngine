@@ -47,7 +47,8 @@ project "PEngine"
 
     defines
     {
-        "_CRT_SECURE_NO_WARNINGS"
+        "_CRT_SECURE_NO_WARNINGS",
+        "GLFW_INCLUDE_NONE"
     }
 
     includedirs
@@ -74,9 +75,7 @@ project "PEngine"
 
         defines
         {
-            "PENGINE_PLATFORM_WINDOWS",
-            "PENGINE_BUILD_DLL",
-            "GLFW_INCLUDE_NONE"
+            "PENGINE_PLATFORM_WINDOWS"
         }
 
     filter "configurations:Debug"
