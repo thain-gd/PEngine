@@ -16,7 +16,7 @@ namespace PEngine
 			return nullptr;
 
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLShader>(filepath);
+			return CreateRef<OpenGLShader>(filepath);
 		}
 
 		PE_CORE_ASSERT(false, "Unknown RendererAPI!");
@@ -32,7 +32,7 @@ namespace PEngine
 				return nullptr;
 
 			case RendererAPI::API::OpenGL:
-				return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
+				return CreateRef<OpenGLShader>(name, vertexSrc, fragmentSrc);
 		}
 
 		PE_CORE_ASSERT(false, "Unknown RendererAPI!");

@@ -15,7 +15,7 @@ namespace PEngine
 			return nullptr;
 
 		case RendererAPI::API::OpenGL:
-			return std::make_shared<OpenGLVertexArray>();
+			return CreateRef<OpenGLVertexArray>();
 		}
 
 		PE_CORE_ASSERT(false, "Unknown RendererAPI!");
