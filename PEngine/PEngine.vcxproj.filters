@@ -10,6 +10,9 @@
     <Filter Include="src\PEngine\Core">
       <UniqueIdentifier>{7ADE012E-66D7-2080-8F09-06057B61008C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\PEngine\Debug">
+      <UniqueIdentifier>{D8084AEE-441F-4884-8D96-D3A5F9EB180C}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\PEngine\Events">
       <UniqueIdentifier>{867615BB-725A-D610-DBBA-D063C7BDC092}</UniqueIdentifier>
     </Filter>
@@ -117,6 +120,9 @@
     <ClInclude Include="src\PEngine\Renderer\Camera.h">
       <Filter>src\PEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\PEngine\Renderer\Framebuffer.h">
+      <Filter>src\PEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\PEngine\Renderer\GraphicsContext.h">
       <Filter>src\PEngine\Renderer</Filter>
     </ClInclude>
@@ -151,6 +157,9 @@
       <Filter>src\Platforms\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platforms\OpenGL\OpenGLContext.h">
+      <Filter>src\Platforms\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platforms\OpenGL\OpenGLFramebuffer.h">
       <Filter>src\Platforms\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platforms\OpenGL\OpenGLRendererAPI.h">
@@ -1424,6 +1433,9 @@
     <ClCompile Include="src\PEngine\Renderer\Camera.cpp">
       <Filter>src\PEngine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\PEngine\Renderer\Framebuffer.cpp">
+      <Filter>src\PEngine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\PEngine\Renderer\OrthographicCameraController.cpp">
       <Filter>src\PEngine\Renderer</Filter>
     </ClCompile>
@@ -1455,6 +1467,9 @@
       <Filter>src\Platforms\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platforms\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platforms\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platforms\OpenGL\OpenGLFramebuffer.cpp">
       <Filter>src\Platforms\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platforms\OpenGL\OpenGLRendererAPI.cpp">
