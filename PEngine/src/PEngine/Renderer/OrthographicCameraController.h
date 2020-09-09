@@ -21,6 +21,8 @@ namespace PEngine
 		float m_CameraTranslationSpeed = 5.0f;
 		float m_CameraRotationSpeed = 45.0f;
 
+		void CalculateView();
+
 		bool OnMouseScrolled(MouseScrolledEvent& e);
 		bool OnWindowResized(WindowResizeEvent& e);
 
@@ -34,6 +36,10 @@ namespace PEngine
 		const OrthographicCamera& GetCamera() const { return m_Camera; }
 
 		float GetZoomLevel() const { return m_ZoomLevel; }
-		void SetZoomLevel(float level) { m_ZoomLevel = level; }
+		void SetZoomLevel(float level)
+		{
+			m_ZoomLevel = level;
+			CalculateView();
+		}
 	};
 }
