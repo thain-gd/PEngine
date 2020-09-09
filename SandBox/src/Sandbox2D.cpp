@@ -14,11 +14,6 @@ void Sandbox2D::OnAttach()
 	PE_PROFILE_FUNCTION();
 	
 	m_CheckerboardTexture = PEngine::Texture2D::Create("assets/textures/Checkerboard.png");
-	m_SpriteSheet = PEngine::Texture2D::Create("assets/games/textures/RPGpack_sheet_2X.png");
-
-	m_TextureStairs = PEngine::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 7, 6 }, { 128, 128 });
-	m_TextureBarrel = PEngine::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 8, 2 }, { 128, 128 });
-	m_TextureTree = PEngine::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 2, 1 }, { 128, 128 }, { 1, 2 });
 }
 
 void Sandbox2D::OnDetach()
@@ -46,11 +41,10 @@ void Sandbox2D::OnUpdate(PEngine::Timestep ts)
 		rotation += ts * 50.0f;
 
 		PE_PROFILE_SCOPE("Renderer Draw");
-#if 0
 		PEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
 		PEngine::Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, 45.0f, { 0.8f, 0.2f, 0.3f, 1.0f });
 		PEngine::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
-		PEngine::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
+		PEngine::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, m_SquareColor);
 		PEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 20.0f, 20.0f }, m_CheckerboardTexture, 10.0f);
 		PEngine::Renderer2D::DrawRotatedQuad({ -2.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, rotation, m_CheckerboardTexture, 20.0f);
 		PEngine::Renderer2D::EndScene();
@@ -61,22 +55,17 @@ void Sandbox2D::OnUpdate(PEngine::Timestep ts)
 			for (float x = -5.0f; x < 5.0f; x += 0.5f)
 			{
 				glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.7f };
-				PEngine::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45 }, color);
+				PEngine::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45f }, color);
 			}
 		}
-		PEngine::Renderer2D::EndScene();
-#endif
-
-		PEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
-		PEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, m_TextureStairs);
-		PEngine::Renderer2D::DrawQuad({ 1.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, m_TextureBarrel);
-		PEngine::Renderer2D::DrawQuad({ -1.0f, 0.0f, 0.0f }, { 1.0f, 2.0f }, m_TextureTree);
 		PEngine::Renderer2D::EndScene();
 	}
 }
 
 void Sandbox2D::OnImGuiRender()
 {
+	PE_PROFILE_FUNCTION();
+
 	ImGui::Begin("Settings");
 
 	auto stats = PEngine::Renderer2D::GetStats();

@@ -10,9 +10,8 @@ private:
 	// TEMP
 	PEngine::Ref<PEngine::VertexArray> m_SquareVA;
 	PEngine::Ref<PEngine::Shader> m_FlatColorShader;
+
 	PEngine::Ref<PEngine::Texture2D> m_CheckerboardTexture;
-	PEngine::Ref<PEngine::Texture2D> m_SpriteSheet;
-	PEngine::Ref<PEngine::SubTexture2D> m_TextureStairs, m_TextureBarrel, m_TextureTree;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 

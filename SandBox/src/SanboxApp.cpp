@@ -203,7 +203,7 @@ public:
 
 	bool OnKeyPressedEvent(PEngine::KeyPressedEvent& event)
 	{
-		if (event.GetKeyCode() == PE_KEY_LEFT)
+		if (event.GetKeyCode() == PEngine::Key::Left)
 		{
 
 		}

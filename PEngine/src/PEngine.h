@@ -10,7 +10,7 @@
 
 #include "PEngine/Core/Input.h"
 #include "PEngine/Core/KeyCodes.h"
-#include "PEngine/Core/MouseButtonCodes.h"
+#include "PEngine/Core/MouseCodes.h"
 
 #include "PEngine/ImGui/ImGuiLayer.h"
 
