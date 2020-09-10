@@ -2,8 +2,8 @@
 
 #include "PEngine/Core/Base.h"
 
-#include "Window.h"
-#include "LayerStack.h"
+#include "PEngine/Core/Window.h"
+#include "PEngine/Core/LayerStack.h"
 #include "PEngine/Events/Event.h"
 #include "PEngine/Events/ApplicationEvent.h"
 
@@ -18,7 +18,7 @@ namespace PEngine {
 	private:
 		static Application* s_Instance;
 
-		std::unique_ptr<Window> m_Window;
+		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		bool m_Minimized = false;

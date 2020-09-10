@@ -1493,5 +1493,7 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\PEngine\Core\Window.cpp" />
+    <ClCompile Include="src\PEngine\Renderer\GraphicsContext.cpp" />
   </ItemGroup>
 </Project>

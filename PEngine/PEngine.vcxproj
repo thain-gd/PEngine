@@ -595,11 +595,13 @@
     <ClCompile Include="src\PEngine\Core\Layer.cpp" />
     <ClCompile Include="src\PEngine\Core\LayerStack.cpp" />
     <ClCompile Include="src\PEngine\Core\Log.cpp" />
+    <ClCompile Include="src\PEngine\Core\Window.cpp" />
     <ClCompile Include="src\PEngine\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\PEngine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\PEngine\Renderer\Buffer.cpp" />
     <ClCompile Include="src\PEngine\Renderer\Camera.cpp" />
     <ClCompile Include="src\PEngine\Renderer\Framebuffer.cpp" />
+    <ClCompile Include="src\PEngine\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\PEngine\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\PEngine\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\PEngine\Renderer\Renderer.cpp" />
