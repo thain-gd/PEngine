@@ -31,7 +31,7 @@ namespace PEngine {
 	public:
 		static Application& Instance() { return *s_Instance; }
 
-		Application();
+		Application(const std::string& name = "PEngine App");
 		virtual ~Application();
 
 		void Run();
@@ -42,6 +42,8 @@ namespace PEngine {
 		void PushOverlay(Layer* layer);
 		
 		Window& GetWindow() { return *m_Window; }
+
+		void Close();
 	};
 
 	//To be define in client
