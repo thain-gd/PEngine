@@ -15,12 +15,19 @@ namespace PEngine
 	{
 		PE_PROFILE_FUNCTION();
 
-		m_CheckerboardTexture = PEngine::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 
-		PEngine::FramebufferSpecification fbSpec;
+		FramebufferSpecification fbSpec;
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
-		m_Framebuffer = PEngine::Framebuffer::Create(fbSpec);
+		m_Framebuffer = Framebuffer::Create(fbSpec);
+
+		m_ActiveScene = CreateRef<Scene>();
+
+		auto square = m_ActiveScene->CreateEntity("Square");
+		square.AddComponent<SpriteRendererComponent>(glm::vec4{ 0.0f, 1.0f, 0.0f, 1.0f });
+
+		m_SquareEntity = square;
 	}
 
 	void EditorLayer::OnDetach()
@@ -28,7 +35,7 @@ namespace PEngine
 		PE_PROFILE_FUNCTION();
 	}
 
-	void EditorLayer::OnUpdate(PEngine::Timestep ts)
+	void EditorLayer::OnUpdate(Timestep ts)
 	{
 		PE_PROFILE_FUNCTION();
 
@@ -36,39 +43,18 @@ namespace PEngine
 		m_CameraController.OnUpdate(ts);
 
 		// Render
-		PEngine::Renderer2D::ResetStats();
-		{
-			PE_PROFILE_SCOPE("Renderer Prep");
-			m_Framebuffer->Bind();
-			PEngine::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-			PEngine::RenderCommand::Clear();
-		}
+		Renderer2D::ResetStats();
+		m_Framebuffer->Bind();
+		RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+		RenderCommand::Clear();
 
-		{
-			static float rotation = 0.0f;
-			rotation += ts * 50.0f;
+		Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-			PE_PROFILE_SCOPE("Renderer Draw");
-			PEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
-			PEngine::Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, 45.0f, { 0.8f, 0.2f, 0.3f, 1.0f });
-			PEngine::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
-			PEngine::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, m_SquareColor);
-			PEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 20.0f, 20.0f }, m_CheckerboardTexture, 10.0f);
-			PEngine::Renderer2D::DrawRotatedQuad({ -2.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, rotation, m_CheckerboardTexture, 20.0f);
-			PEngine::Renderer2D::EndScene();
+		m_ActiveScene->OnUpdate(ts);
 
-			PEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
-			for (float y = -5.0f; y < 5.0f; y += 0.5f)
-			{
-				for (float x = -5.0f; x < 5.0f; x += 0.5f)
-				{
-					glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.7f };
-					PEngine::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45 }, color);
-				}
-			}
-			PEngine::Renderer2D::EndScene();
-			m_Framebuffer->Unbind();
-		}
+		Renderer2D::EndScene();
+
+		m_Framebuffer->Unbind();
 	}
 
 	void EditorLayer::OnImGuiRender()
@@ -127,7 +113,7 @@ namespace PEngine
 				//ImGui::MenuItem("Fullscreen", NULL, &opt_fullscreen_persistant);
 
 				if (ImGui::MenuItem("Exit"))
-					PEngine::Application::Instance().Close();
+					Application::Instance().Close();
 				ImGui::EndMenu();
 			}
 
@@ -136,14 +122,20 @@ namespace PEngine
 
 		ImGui::Begin("Settings");
 
-		auto stats = PEngine::Renderer2D::GetStats();
+		auto stats = Renderer2D::GetStats();
 		ImGui::Text("Renderer2D Stats:");
 		ImGui::Text("Draw Calls: %d", stats.DrawCalls);
 		ImGui::Text("Quads: %d", stats.QuadCount);
 		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
 		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 
-		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+		ImGui::Separator();
+		auto& tag = m_SquareEntity.GetComponent<TagComponent>().Tag;
+		ImGui::Text("%s", tag.c_str());
+
+		auto& squareColor = m_SquareEntity.GetComponent<SpriteRendererComponent>().Color;
+		ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
+		ImGui::Separator();
 
 		ImGui::End();
 			
@@ -165,7 +157,7 @@ namespace PEngine
 		ImGui::End();
 	}
 
-	void EditorLayer::OnEvent(PEngine::Event& e)
+	void EditorLayer::OnEvent(Event& e)
 	{
 		m_CameraController.OnEvent(e);
 	}

@@ -1404,6 +1404,9 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\PEngine\Scene\Scene.h" />
+    <ClInclude Include="src\PEngine\Scene\Components.h" />
+    <ClInclude Include="src\PEngine\Scene\Entity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\PEngine\Core\Application.cpp">
@@ -1416,6 +1419,9 @@
       <Filter>src\PEngine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\PEngine\Core\Log.cpp">
+      <Filter>src\PEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PEngine\Core\Window.cpp">
       <Filter>src\PEngine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\PEngine\ImGui\ImGuiBuild.cpp">
@@ -1431,6 +1437,9 @@
       <Filter>src\PEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\PEngine\Renderer\Framebuffer.cpp">
+      <Filter>src\PEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PEngine\Renderer\GraphicsContext.cpp">
       <Filter>src\PEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\PEngine\Renderer\OrthographicCameraController.cpp">
@@ -1493,7 +1502,7 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\PEngine\Core\Window.cpp" />
-    <ClCompile Include="src\PEngine\Renderer\GraphicsContext.cpp" />
+    <ClCompile Include="src\PEngine\Scene\Scene.cpp" />
+    <ClCompile Include="src\PEngine\Scene\Entity.cpp" />
   </ItemGroup>
 </Project>

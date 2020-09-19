@@ -17,6 +17,7 @@ IncludeDir["Glad"] = "PEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "PEngine/vendor/imgui"
 IncludeDir["glm"] = "PEngine/vendor/glm"
 IncludeDir["stb_image"] = "PEngine/vendor/stb_image"
+IncludeDir["entt"] = "PEngine/vendor/entt/include"
 
 group "Dependencies"
     include "PEngine/vendor/GLFW"
@@ -61,7 +62,8 @@ project "PEngine"
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
         "%{IncludeDir.glm}",
-        "%{IncludeDir.stb_image}"
+        "%{IncludeDir.stb_image}",
+        "%{IncludeDir.entt}"
     }
 
     links
@@ -116,7 +118,8 @@ project "PEngine-Editor"
         "PEngine/vendor/spdlog/include",
         "PEngine/src",
         "PEngine/vendor",
-        "%{IncludeDir.glm}"
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.entt}"
     }
 
     links
@@ -168,7 +171,8 @@ project "SandBox"
         "PEngine/vendor/spdlog/include",
         "PEngine/src",
         "PEngine/vendor",
-        "%{IncludeDir.glm}"
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.entt}"
     }
 
     links

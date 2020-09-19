@@ -14,6 +14,10 @@
 
 #include "PEngine/ImGui/ImGuiLayer.h"
 
+#include "PEngine/Scene/Scene.h"
+#include "PEngine/Scene/Entity.h"
+#include "PEngine/Scene/Components.h"
+
 // ---Renderer--------------------
 #include "PEngine/Renderer/Renderer.h"
 #include "PEngine/Renderer/Renderer2D.h"
