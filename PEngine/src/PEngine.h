@@ -29,7 +29,7 @@
 #include "PEngine/Renderer/Texture.h"
 #include "PEngine/Renderer/VertexArray.h"
 
-#include "PEngine/Renderer/Camera.h"
+#include "PEngine/Renderer/OrthographicCamera.h"
 #include "PEngine/Renderer/OrthographicCameraController.h"
 
 // ----------------------------------

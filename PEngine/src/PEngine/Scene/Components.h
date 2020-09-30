@@ -1,5 +1,7 @@
 #pragma once
 
+#include "PEngine/Renderer/Camera.h"
+
 #include <glm/glm.hpp>
 
 namespace PEngine
@@ -35,5 +37,16 @@ namespace PEngine
 		SpriteRendererComponent(const SpriteRendererComponent&) = default;
 		SpriteRendererComponent(const glm::vec4& color)
 			: Color(color) {}
+	};
+
+	struct CameraComponent
+	{
+		PEngine::Camera Camera;
+		bool Primary = true;	// TODO: moving to scene
+
+		CameraComponent() = default;
+		CameraComponent(const CameraComponent&) = default;
+		CameraComponent(const glm::mat4& projection)
+			: Camera(projection) {}
 	};
 }

@@ -22,6 +22,9 @@
     <Filter Include="src\PEngine\Renderer">
       <UniqueIdentifier>{C83E48CD-B4CD-D196-5DEC-E591495AE23C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\PEngine\Scene">
+      <UniqueIdentifier>{7F6B58EF-EB81-5685-34F9-E1A6A04E270D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platforms">
       <UniqueIdentifier>{B40E5C85-20CF-D7BB-E909-213955891C98}</UniqueIdentifier>
     </Filter>
@@ -123,6 +126,9 @@
     <ClInclude Include="src\PEngine\Renderer\GraphicsContext.h">
       <Filter>src\PEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\PEngine\Renderer\OrthographicCamera.h">
+      <Filter>src\PEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\PEngine\Renderer\OrthographicCameraController.h">
       <Filter>src\PEngine\Renderer</Filter>
     </ClInclude>
@@ -149,6 +155,15 @@
     </ClInclude>
     <ClInclude Include="src\PEngine\Renderer\VertexArray.h">
       <Filter>src\PEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PEngine\Scene\Components.h">
+      <Filter>src\PEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PEngine\Scene\Entity.h">
+      <Filter>src\PEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PEngine\Scene\Scene.h">
+      <Filter>src\PEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\Platforms\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platforms\OpenGL</Filter>
@@ -1404,9 +1419,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\PEngine\Scene\Scene.h" />
-    <ClInclude Include="src\PEngine\Scene\Components.h" />
-    <ClInclude Include="src\PEngine\Scene\Entity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\PEngine\Core\Application.cpp">
@@ -1433,13 +1445,13 @@
     <ClCompile Include="src\PEngine\Renderer\Buffer.cpp">
       <Filter>src\PEngine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\PEngine\Renderer\Camera.cpp">
-      <Filter>src\PEngine\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="src\PEngine\Renderer\Framebuffer.cpp">
       <Filter>src\PEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\PEngine\Renderer\GraphicsContext.cpp">
+      <Filter>src\PEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PEngine\Renderer\OrthographicCamera.cpp">
       <Filter>src\PEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\PEngine\Renderer\OrthographicCameraController.cpp">
@@ -1468,6 +1480,12 @@
     </ClCompile>
     <ClCompile Include="src\PEngine\Renderer\VertexArray.cpp">
       <Filter>src\PEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PEngine\Scene\Entity.cpp">
+      <Filter>src\PEngine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PEngine\Scene\Scene.cpp">
+      <Filter>src\PEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\Platforms\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platforms\OpenGL</Filter>
@@ -1502,7 +1520,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\PEngine\Scene\Scene.cpp" />
-    <ClCompile Include="src\PEngine\Scene\Entity.cpp" />
   </ItemGroup>
 </Project>
