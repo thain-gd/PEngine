@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PEngine/Renderer/Camera.h"
+#include "PEngine/Scene/SceneCamera.h"
 
 #include <glm/glm.hpp>
 
@@ -41,12 +41,11 @@ namespace PEngine
 
 	struct CameraComponent
 	{
-		PEngine::Camera Camera;
+		SceneCamera Camera;
 		bool Primary = true;	// TODO: moving to scene
+		bool FixedASpectRatio = false;
 
 		CameraComponent() = default;
 		CameraComponent(const CameraComponent&) = default;
-		CameraComponent(const glm::mat4& projection)
-			: Camera(projection) {}
 	};
 }

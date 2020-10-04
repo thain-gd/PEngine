@@ -175,6 +175,7 @@
     <ClInclude Include="src\PEngine\Scene\Components.h" />
     <ClInclude Include="src\PEngine\Scene\Entity.h" />
     <ClInclude Include="src\PEngine\Scene\Scene.h" />
+    <ClInclude Include="src\PEngine\Scene\SceneCamera.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGLFramebuffer.h" />
@@ -617,6 +618,7 @@
     <ClCompile Include="src\PEngine\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\PEngine\Scene\Entity.cpp" />
     <ClCompile Include="src\PEngine\Scene\Scene.cpp" />
+    <ClCompile Include="src\PEngine\Scene\SceneCamera.cpp" />
     <ClCompile Include="src\Platforms\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platforms\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platforms\OpenGL\OpenGLFramebuffer.cpp" />
@@ -645,4 +647,4 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-</Project> 
+</Project>
