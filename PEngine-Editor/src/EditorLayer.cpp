@@ -146,6 +146,8 @@ namespace PEngine
 		ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
 		ImGui::Separator();
 
+		ImGui::DragFloat3("Camera Transform", glm::value_ptr(m_CameraEntity.GetComponent<TransformComponent>().Transform[3]));
+
 		ImGui::End();
 			
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
