@@ -176,6 +176,7 @@
     <ClInclude Include="src\PEngine\Scene\Entity.h" />
     <ClInclude Include="src\PEngine\Scene\Scene.h" />
     <ClInclude Include="src\PEngine\Scene\SceneCamera.h" />
+    <ClInclude Include="src\PEngine\Scene\ScriptableEntity.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platforms\OpenGL\OpenGLFramebuffer.h" />
