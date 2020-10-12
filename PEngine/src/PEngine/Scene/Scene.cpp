@@ -50,7 +50,7 @@ namespace PEngine
 		auto view = m_Registry.view<TransformComponent, CameraComponent>();
 		for (auto entity : view)
 		{
-			auto& [transform, camera] = view.get<TransformComponent, CameraComponent>(entity);
+			auto [transform, camera] = view.get<TransformComponent, CameraComponent>(entity);
 
 			if (camera.Primary)
 			{
@@ -67,7 +67,7 @@ namespace PEngine
 			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
 			for (auto entity : group)
 			{
-				auto& [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
+				auto [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
 
 				Renderer2D::DrawQuad(transform, sprite.Color);
 			}
