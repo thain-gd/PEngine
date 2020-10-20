@@ -8,12 +8,6 @@ namespace PEngine
 {
 	class OpenGLTexture2D : public Texture2D
 	{
-	private:
-		std::string m_Path;
-		uint32_t m_Width, m_Height;
-		uint32_t m_RendererID;
-		GLenum m_InternalFormat, m_DataFormat;
-
 	public:
 		OpenGLTexture2D(uint32_t width, uint32_t height);
 		OpenGLTexture2D(const std::string& path);
@@ -31,5 +25,11 @@ namespace PEngine
 		{
 			return m_RendererID == ((OpenGLTexture2D&)other).m_RendererID;
 		}
+
+	private:
+		std::string m_Path;
+		uint32_t m_Width, m_Height;
+		uint32_t m_RendererID;
+		GLenum m_InternalFormat, m_DataFormat;
 	};
 }

@@ -6,23 +6,20 @@ namespace PEngine
 {
 	class KeyEvent : public Event
 	{
+	public:
+		int GetKeyCode() { return m_KeyCode; }
+
+		EVENT_CLASS_CATEGORY(EventCategoryKeyBoard | EventCategoryInput)
+
 	protected:
 		KeyEvent(int keycode)
 			: m_KeyCode(keycode) {}
 
 		int m_KeyCode;
-
-	public:
-		int GetKeyCode() { return m_KeyCode; }
-
-		EVENT_CLASS_CATEGORY(EventCategoryKeyBoard | EventCategoryInput)
 	};
 
 	class KeyPressedEvent : public KeyEvent
 	{
-	private:
-		int m_RepeatCount;
-
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
 			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
@@ -37,13 +34,13 @@ namespace PEngine
 		}
 
 		EVENT_CLASS_TYPE(KeyPressed)
+
+	private:
+		int m_RepeatCount;
 	};
 
 	class KeyReleasedEvent : public KeyEvent
 	{
-	private:
-		int m_RepeatCount;
-
 	public:
 		KeyReleasedEvent(int keycode)
 			: KeyEvent(keycode) {}
@@ -58,6 +55,10 @@ namespace PEngine
 		}
 
 		EVENT_CLASS_TYPE(KeyReleased)
+
+	private:
+		int m_RepeatCount;
+
 	};
 
 	class KeyTypedEvent : public KeyEvent

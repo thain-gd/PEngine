@@ -8,14 +8,6 @@ namespace PEngine
 {
 	class Renderer
 	{
-	private:
-		struct SceneData
-		{
-			glm::mat4 ViewProjectionMatrix;
-		};
-
-		static SceneData* m_SceneData;
-
 	public:
 		static void Init();
 		static void Shutdown();
@@ -28,6 +20,15 @@ namespace PEngine
 		static void Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform = glm::mat4(1));
 
 		static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
+
+	private:
+		struct SceneData
+		{
+			glm::mat4 ViewProjectionMatrix;
+		};
+
+		static SceneData* m_SceneData;
+
 	};
 
 }

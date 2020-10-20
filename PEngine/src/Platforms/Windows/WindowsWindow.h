@@ -9,24 +9,6 @@ namespace PEngine
 {
 	class WindowsWindow : public Window
 	{
-	private:
-		GLFWwindow* m_Window;
-		Scope<GraphicsContext> m_Context;
-
-		struct WindowData
-		{
-			std::string Title;
-			uint32_t Width, Height;
-			bool VSync;
-
-			EventCallbackFn EventCallback;
-		};
-
-		WindowData m_Data;
-
-		virtual void Init(const WindowProps& props);
-		virtual void ShutDown();
-
 	public:
 		WindowsWindow(const WindowProps& props);
 		virtual ~WindowsWindow();
@@ -42,5 +24,24 @@ namespace PEngine
 		bool IsVSync() const override;
 
 		void* GetNativeWindow() const override { return m_Window; };
+
+	private:
+		virtual void Init(const WindowProps& props);
+		virtual void ShutDown();
+
+	private:
+		GLFWwindow* m_Window;
+		Scope<GraphicsContext> m_Context;
+
+		struct WindowData
+		{
+			std::string Title;
+			uint32_t Width, Height;
+			bool VSync;
+
+			EventCallbackFn EventCallback;
+		};
+
+		WindowData m_Data;
 	};
 }

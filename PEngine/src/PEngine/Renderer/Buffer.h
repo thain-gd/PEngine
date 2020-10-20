@@ -65,20 +65,6 @@ namespace PEngine
 
 	class BufferLayout
 	{
-	private:
-		std::vector<BufferElement> m_Elements;
-		uint32_t m_Stride = 0;
-
-		void CalculateOffsetAndStride()
-		{
-			m_Stride = 0;
-			for (auto& element : m_Elements)
-			{
-				element.Offset = m_Stride;
-				m_Stride += element.Size;
-			}
-		}
-
 	public:
 		BufferLayout() = default;
 
@@ -95,6 +81,20 @@ namespace PEngine
 		std::vector<BufferElement>::iterator end() { return m_Elements.end(); }
 		std::vector<BufferElement>::const_iterator begin() const { return m_Elements.begin(); }
 		std::vector<BufferElement>::const_iterator end() const { return m_Elements.end(); }
+
+	private:
+		std::vector<BufferElement> m_Elements;
+		uint32_t m_Stride = 0;
+
+		void CalculateOffsetAndStride()
+		{
+			m_Stride = 0;
+			for (auto& element : m_Elements)
+			{
+				element.Offset = m_Stride;
+				m_Stride += element.Size;
+			}
+		}
 	};
 
 	class VertexBuffer

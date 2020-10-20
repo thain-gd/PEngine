@@ -6,9 +6,6 @@ namespace PEngine
 {
 	class RenderCommand
 	{
-	private:
-		static RendererAPI* s_RendererAPI;
-
 	public:
 		static void Init()
 		{
@@ -34,5 +31,8 @@ namespace PEngine
 		{
 			s_RendererAPI->DrawIndexed(vertexArray, count);
 		}
+
+	private:
+		static RendererAPI* s_RendererAPI;
 	};
 }

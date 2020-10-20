@@ -9,9 +9,6 @@ namespace PEngine
 {
 	class Renderer2D
 	{
-	private:
-		static void FlushAndReset();
-
 	public:
 		static void Init();
 		static void Shutdown();
@@ -49,5 +46,8 @@ namespace PEngine
 		};
 		static void ResetStats();
 		static Statistics GetStats();
+
+	private:
+		static void FlushAndReset();
 	};
 }

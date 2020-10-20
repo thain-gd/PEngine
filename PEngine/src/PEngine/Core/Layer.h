@@ -8,9 +8,6 @@ namespace PEngine
 {
 	class Layer
 	{
-	protected:
-		std::string m_DebugName;
-
 	public:
 		Layer(const std::string& name = "Layer");
 		virtual ~Layer();
@@ -22,5 +19,8 @@ namespace PEngine
 		virtual void OnEvent(Event& event) {}
 
 		const std::string& GetName() { return m_DebugName; }
+
+	protected:
+		std::string m_DebugName;
 	};
 }

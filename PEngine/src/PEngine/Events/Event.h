@@ -52,8 +52,6 @@ namespace PEngine
 	{
 		template<typename T>
 		using EventFn = std::function<bool(T&)>;
-	private:
-		Event& m_Event;
 
 	public:
 		EventDispatcher(Event& event)
@@ -70,6 +68,9 @@ namespace PEngine
 
 			return false;
 		}
+
+	private:
+		Event& m_Event;
 	};
 
 	inline std::ostream& operator<<(std::ostream& os, const Event& e)

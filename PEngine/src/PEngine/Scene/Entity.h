@@ -8,10 +8,6 @@ namespace PEngine
 {
 	class Entity
 	{
-	private:
-		entt::entity m_EntityHandle{ entt::null };
-		Scene* m_Scene = nullptr;
-
 	public:
 		Entity() = default;
 		Entity(entt::entity handle, Scene* scene);
@@ -59,5 +55,9 @@ namespace PEngine
 		{
 			return !(*this == other);
 		}
+
+	private:
+		entt::entity m_EntityHandle{ entt::null };
+		Scene* m_Scene = nullptr;
 	};
 }

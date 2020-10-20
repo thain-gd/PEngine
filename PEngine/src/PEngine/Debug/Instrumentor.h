@@ -23,10 +23,6 @@ namespace PEngine
 
     class Instrumentor
     {
-    private:
-        InstrumentationSession* m_CurrentSession;
-        std::ofstream m_OutputStream;
-        int m_ProfileCount;
     public:
         Instrumentor()
             : m_CurrentSession(nullptr), m_ProfileCount(0)
@@ -87,15 +83,15 @@ namespace PEngine
             static Instrumentor instance;
             return instance;
         }
+
+    private:
+        InstrumentationSession* m_CurrentSession;
+        std::ofstream m_OutputStream;
+        int m_ProfileCount;
     };
 
     class InstrumentationTimer
     {
-    private:
-        const char* m_Name;
-        std::chrono::time_point<std::chrono::high_resolution_clock> m_StartTimepoint;
-        bool m_Stopped;
-
     public:
         InstrumentationTimer(const char* name)
             : m_Name(name), m_Stopped(false)
@@ -121,6 +117,11 @@ namespace PEngine
 
             m_Stopped = true;
         }
+
+    private:
+        const char* m_Name;
+        std::chrono::time_point<std::chrono::high_resolution_clock> m_StartTimepoint;
+        bool m_Stopped;
     };
 }
 

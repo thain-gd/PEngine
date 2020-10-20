@@ -7,6 +7,17 @@ namespace PEngine
 {
 	class EditorLayer : public Layer
 	{
+	public:
+		EditorLayer();
+		~EditorLayer() = default;
+
+		void OnAttach() override;
+		void OnDetach() override;
+
+		void OnUpdate(Timestep ts) override;
+		void OnImGuiRender() override;
+		void OnEvent(Event& e) override;
+
 	private:
 		OrthographicCameraController m_CameraController;
 
@@ -30,16 +41,5 @@ namespace PEngine
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
-
-	public:
-		EditorLayer();
-		~EditorLayer() = default;
-
-		void OnAttach() override;
-		void OnDetach() override;
-
-		void OnUpdate(Timestep ts) override;
-		void OnImGuiRender() override;
-		void OnEvent(Event& e) override;
 	};
 }

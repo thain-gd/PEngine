@@ -6,13 +6,6 @@ namespace PEngine
 {
 	class SceneCamera : public Camera
 	{
-	private:
-		float m_OrthographicSize = 10.0f;
-		float m_OrthographicNear = -1.0f, m_OrthographicFar = 1.0f;
-
-		float m_AspectRatio = 0.0f;
-
-
 	public:
 		SceneCamera();
 		virtual ~SceneCamera() = default;
@@ -26,5 +19,11 @@ namespace PEngine
 
 	private:
 		void RecalculateProjection();
+
+	private:
+		float m_OrthographicSize = 10.0f;
+		float m_OrthographicNear = -1.0f, m_OrthographicFar = 1.0f;
+
+		float m_AspectRatio = 0.0f;
 	};
 }

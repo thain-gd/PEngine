@@ -9,9 +9,6 @@ namespace PEngine
 {
 	class ImGuiLayer : public Layer
 	{
-	private:
-		float m_Time = 0;
-
 	public:
 		ImGuiLayer();
 		~ImGuiLayer();
@@ -21,5 +18,8 @@ namespace PEngine
 
 		void Begin();
 		void End();
+
+	private:
+		float m_Time = 0;
 	};
 }

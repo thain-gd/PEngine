@@ -6,9 +6,6 @@ namespace PEngine
 {
 	class MouseMovedEvent : public Event
 	{
-	private:
-		float m_MouseX, m_MouseY;
-
 	public:
 		MouseMovedEvent(float x, float y)
 			: m_MouseX(x), m_MouseY(y) {}
@@ -25,13 +22,13 @@ namespace PEngine
 
 		EVENT_CLASS_TYPE(MouseMoved)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+
+	private:
+		float m_MouseX, m_MouseY;
 	};
 
 	class MouseScrolledEvent : public Event
 	{
-	private:
-		float m_XOffset, m_YOffset;
-
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset)
 			: m_XOffset(xOffset), m_YOffset(yOffset) {}
@@ -48,20 +45,23 @@ namespace PEngine
 
 		EVENT_CLASS_TYPE(MouseScrolled)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+
+	private:
+		float m_XOffset, m_YOffset;
 	};
 
 	class MouseButtonEvent : public Event
 	{
+	public:
+		int GetMouseButton() const { return m_Button; }
+
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+
 	protected:
 		MouseButtonEvent(int button)
 			: m_Button(button) {}
 
 		int m_Button;
-
-	public:
-		int GetMouseButton() const { return m_Button; }
-
-		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	};
 
 	class MouseButtonPressedEvent : public MouseButtonEvent

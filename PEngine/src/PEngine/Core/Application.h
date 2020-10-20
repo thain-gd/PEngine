@@ -15,19 +15,6 @@ namespace PEngine {
 
 	class Application
 	{
-	private:
-		static Application* s_Instance;
-
-		Scope<Window> m_Window;
-		ImGuiLayer* m_ImGuiLayer;
-		bool m_Running = true;
-		bool m_Minimized = false;
-		LayerStack m_LayerStack;
-		float m_LastFrameTime = 0.0f;
-
-		bool OnWindowClose(WindowCloseEvent& e);
-		bool OnWindowResize(WindowResizeEvent& e);
-
 	public:
 		static Application& Instance() { return *s_Instance; }
 
@@ -44,6 +31,19 @@ namespace PEngine {
 		Window& GetWindow() { return *m_Window; }
 
 		void Close();
+
+	private:
+		static Application* s_Instance;
+
+		Scope<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
+		bool m_Running = true;
+		bool m_Minimized = false;
+		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
+
+		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 	};
 
 	//To be define in client

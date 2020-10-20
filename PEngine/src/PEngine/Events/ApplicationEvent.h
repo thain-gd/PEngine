@@ -6,11 +6,8 @@ namespace PEngine
 {
 	class WindowResizeEvent : public Event
 	{
-	private:
-		unsigned int m_Width, m_Height;
-
 	public:
-		WindowResizeEvent(unsigned int width, unsigned int height)
+		WindowResizeEvent(uint32_t width, uint32_t height)
 			: m_Width(width), m_Height(height) {}
 
 		unsigned int GetWidth() { return m_Width; }
@@ -24,7 +21,10 @@ namespace PEngine
 		}
 
 		EVENT_CLASS_TYPE(WindowResize)
-		EVENT_CLASS_CATEGORY(EventCategoryApplication)
+			EVENT_CLASS_CATEGORY(EventCategoryApplication)
+
+	private:
+		uint32_t m_Width, m_Height;
 	};
 
 	class WindowCloseEvent : public Event
