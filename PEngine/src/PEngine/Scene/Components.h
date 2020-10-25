@@ -44,7 +44,7 @@ namespace PEngine
 	{
 		SceneCamera Camera;
 		bool Primary = true;	// TODO: moving to scene
-		bool FixedASpectRatio = false;
+		bool FixedAspectRatio = false;
 
 		CameraComponent() = default;
 		CameraComponent(const CameraComponent&) = default;
