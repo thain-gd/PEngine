@@ -111,7 +111,7 @@ namespace PEngine
 			if (ImGui::TreeNodeEx((void*)typeid(CameraComponent).hash_code(), treeNodeFlags, "Camera"))
 			{
 				auto& cameraComponent = entity.GetComponent<CameraComponent>();
-				auto& camera = entity.GetComponent<CameraComponent>().Camera;
+				auto& camera = cameraComponent.Camera;
 
 				ImGui::Checkbox("Primary", &cameraComponent.Primary);
 
@@ -144,25 +144,25 @@ namespace PEngine
 					if (ImGui::DragFloat("Near", &orthoNear))
 						camera.SetOrthographicNearClip(orthoNear);
 
-					float orthorFar = camera.GetOrthographicFarClip();
-					if (ImGui::DragFloat("Far", &orthorFar))
-						camera.SetOrthographicFarClip(orthorFar);
+					float orthoFar = camera.GetOrthographicFarClip();
+					if (ImGui::DragFloat("Far", &orthoFar))
+						camera.SetOrthographicFarClip(orthoFar);
 
 					ImGui::Checkbox("Fixed Aspect Ratio", &cameraComponent.FixedAspectRatio);
 				}
 				else
 				{
-					float verticalFov = glm::degrees(camera.GetPerspectiveVerticalFOV());
-					if (ImGui::DragFloat("Size", &verticalFov))
-						camera.SetOrthographicSize(glm::radians(verticalFov));
+					float perspectiveVerticalFov = glm::degrees(camera.GetPerspectiveVerticalFOV());
+					if (ImGui::DragFloat("Size", &perspectiveVerticalFov))
+						camera.SetPerspectiveVerticalFOV(glm::radians(perspectiveVerticalFov));
 
 					float perspectiveNear = camera.GetPerspectiveNearClip();
 					if (ImGui::DragFloat("Near", &perspectiveNear))
-						camera.SetOrthographicNearClip(perspectiveNear);
+						camera.SetPerspectiveNearClip(perspectiveNear);
 
 					float perspectiveFar = camera.GetPerspectiveFarClip();
 					if (ImGui::DragFloat("Far", &perspectiveFar))
-						camera.SetOrthographicFarClip(perspectiveFar);
+						camera.SetPerspectiveFarClip(perspectiveFar);
 				}
 
 				ImGui::TreePop();
