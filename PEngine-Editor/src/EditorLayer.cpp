@@ -47,6 +47,8 @@ namespace PEngine
 		public:
 			void OnCreate()
 			{
+				auto& translation = GetComponent<TransformComponent>().Translation;
+				translation.x = rand() % 10 - 5.0f;
 			}
 
 			void OnDestroy()
@@ -57,15 +59,15 @@ namespace PEngine
 			void OnUpdate(Timestep ts)
 			{
 				float speed = 5.0f;
-				auto& transform = GetComponent<TransformComponent>().Transform;
+				auto& transform = GetComponent<TransformComponent>().Translation;
 				if (Input::IsKeyPressed(Key::A))
-					transform[3][0] -= speed * ts;
+					transform.x -= speed * ts;
 				if (Input::IsKeyPressed(Key::D))
-					transform[3][0] += speed * ts;
+					transform.x += speed * ts;
 				if (Input::IsKeyPressed(Key::W))
-					transform[3][1] += speed * ts;
+					transform.y += speed * ts;
 				if (Input::IsKeyPressed(Key::S))
-					transform[3][1] -= speed * ts;
+					transform.y -= speed * ts;
 			}
 		};
 
