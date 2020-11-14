@@ -47,7 +47,7 @@ namespace PEngine
 
 		// Render 2D
 		Camera* mainCamera = nullptr;
-		glm::mat4* cameraTransform = nullptr;
+		glm::mat4 cameraTransform;
 		auto view = m_Registry.view<TransformComponent, CameraComponent>();
 		for (auto entity : view)
 		{
@@ -56,14 +56,14 @@ namespace PEngine
 			if (camera.Primary)
 			{
 				mainCamera = &camera.Camera;
-				cameraTransform = &transform.GetTransform();
+				cameraTransform = transform.GetTransform();
 				break;
 			}
 		}
 
 		if (mainCamera)
 		{
-			Renderer2D::BeginScene(mainCamera->GetProjection(), *cameraTransform);
+			Renderer2D::BeginScene(*mainCamera, cameraTransform);
 
 			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
 			for (auto entity : group)
