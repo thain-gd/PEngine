@@ -59,15 +59,15 @@ namespace PEngine
 			void OnUpdate(Timestep ts)
 			{
 				float speed = 5.0f;
-				auto& transform = GetComponent<TransformComponent>().Translation;
+				auto& translation = GetComponent<TransformComponent>().Translation;
 				if (Input::IsKeyPressed(Key::A))
-					transform.x -= speed * ts;
+					translation.x -= speed * ts;
 				if (Input::IsKeyPressed(Key::D))
-					transform.x += speed * ts;
+					translation.x += speed * ts;
 				if (Input::IsKeyPressed(Key::W))
-					transform.y += speed * ts;
+					translation.y += speed * ts;
 				if (Input::IsKeyPressed(Key::S))
-					transform.y -= speed * ts;
+					translation.y -= speed * ts;
 			}
 		};
 
