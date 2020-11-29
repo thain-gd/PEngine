@@ -153,7 +153,7 @@ namespace PEngine
 				else
 				{
 					float perspectiveVerticalFov = glm::degrees(camera.GetPerspectiveVerticalFOV());
-					if (ImGui::DragFloat("Size", &perspectiveVerticalFov))
+					if (ImGui::DragFloat("Vertical FOV", &perspectiveVerticalFov))
 						camera.SetPerspectiveVerticalFOV(glm::radians(perspectiveVerticalFov));
 
 					float perspectiveNear = camera.GetPerspectiveNearClip();
