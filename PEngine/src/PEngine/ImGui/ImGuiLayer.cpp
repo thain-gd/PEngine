@@ -37,6 +37,9 @@ namespace PEngine
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;		// Enabled Docking
 		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;		// Enabled Multi-Viewport / Platform Windows
 
+		io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Bold.ttf", 16.0f);
+		io.FontDefault = io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/OpenSans-Regular.ttf", 16.0f);
+
 		// Setup Dear ImGui style
 		ImGui::StyleColorsDark();
 
