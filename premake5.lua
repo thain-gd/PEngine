@@ -1,256 +1,45 @@
-workspace "PEngine"
-    architecture "x64"
-    startproject "PEngine-Editor"
+include "./vendor/premake/premake_customization/solution_items.lua"
 
-    configurations
-    {
-        "Debug",
-        "Release",
-        "Dist"
-    }
+workspace "PEngine"
+	architecture "x64"
+	startproject "PEngine-Editor"
+
+	configurations
+	{
+		"Debug",
+		"Release",
+		"Dist"
+	}
+
+	solution_items
+	{
+		".editorconfig"
+	}
+
+	flags
+	{
+		"MultiProcessorCompile"
+	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
-IncludeDir["GLFW"] = "PEngine/vendor/GLFW/include"
-IncludeDir["Glad"] = "PEngine/vendor/Glad/include"
-IncludeDir["ImGui"] = "PEngine/vendor/imgui"
-IncludeDir["glm"] = "PEngine/vendor/glm"
-IncludeDir["stb_image"] = "PEngine/vendor/stb_image"
-IncludeDir["entt"] = "PEngine/vendor/entt/include"
+IncludeDir["GLFW"] = "%{wks.location}/PEngine/vendor/GLFW/include"
+IncludeDir["Glad"] = "%{wks.location}/PEngine/vendor/Glad/include"
+IncludeDir["ImGui"] = "%{wks.location}/PEngine/vendor/imgui"
+IncludeDir["glm"] = "%{wks.location}/PEngine/vendor/glm"
+IncludeDir["stb_image"] = "%{wks.location}/PEngine/vendor/stb_image"
+IncludeDir["entt"] = "%{wks.location}/PEngine/vendor/entt/include"
+IncludeDir["yaml_cpp"] = "%{wks.location}/PEngine/vendor/yaml-cpp/include"
 
 group "Dependencies"
-    include "PEngine/vendor/GLFW"
-    include "PEngine/vendor/Glad"
-    include "PEngine/vendor/imgui"
+	include "vendor/premake"
+	include "PEngine/vendor/GLFW"
+	include "PEngine/vendor/Glad"
+	include "PEngine/vendor/imgui"
+	include "PEngine/vendor/yaml-cpp"
 group ""
 
-project "PEngine"
-    location "PEngine"
-    kind "StaticLib"
-    language "C++"
-    cppdialect "C++17"
-    staticruntime "on"
-
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
-    pchheader "pepch.h"
-    pchsource "PEngine/src/pepch.cpp"
-
-    files
-    {
-        "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp",
-        "%{prj.name}/vendor/stb_image/**.h",
-        "%{prj.name}/vendor/stb_image/**.cpp",
-        "%{prj.name}/vendor/glm/glm/**.hpp",
-        "%{prj.name}/vendor/glm/glm/**.inl"
-    }
-
-    defines
-    {
-        "_CRT_SECURE_NO_WARNINGS",
-        "GLFW_INCLUDE_NONE"
-    }
-
-    includedirs
-    {
-        "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}",
-        "%{IncludeDir.Glad}",
-        "%{IncludeDir.ImGui}",
-        "%{IncludeDir.glm}",
-        "%{IncludeDir.stb_image}",
-        "%{IncludeDir.entt}"
-    }
-
-    links
-    {
-        "GLFW",
-        "Glad",
-        "ImGui",
-        "opengl32.lib"
-    }
-
-    filter "system:windows"
-        systemversion "latest"
-
-        defines
-        {
-            "PENGINE_PLATFORM_WINDOWS"
-        }
-
-    filter "configurations:Debug"
-        defines "PENGINE_DEBUG"
-        runtime "Debug"
-        symbols "on"
-
-    filter "configurations:Release"
-        defines "PENGINE_RELEASE"
-        runtime "Release"
-        optimize "on"
-
-    filter "configurations:Dist"
-        defines "PENGINE_DIST"
-        runtime "Release"
-        optimize "on"
-
-project "PEngine-Editor"
-    location "PEngine-Editor"
-    kind "ConsoleApp"
-    language "C++"
-    cppdialect "C++17"
-    staticruntime "on"
-
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
-    files
-    {
-        "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
-    }
-
-    includedirs
-    {
-        "PEngine/vendor/spdlog/include",
-        "PEngine/src",
-        "PEngine/vendor",
-        "%{IncludeDir.glm}",
-        "%{IncludeDir.entt}"
-    }
-
-    links
-    {
-        "PEngine"
-    }
-
-    filter "system:windows"
-        systemversion "latest"
-
-        defines
-        {
-            "PENGINE_PLATFORM_WINDOWS"
-        }
-
-    filter "configurations:Debug"
-        defines "PENGINE_DEBUG"
-        runtime "Debug"
-        symbols "on"
-
-    filter "configurations:Release"
-        defines "PENGINE_RELEASE"
-        runtime "Release"
-        optimize "on"
-
-    filter "configurations:Dist"
-        defines "PENGINE_DIST"
-        runtime "Release"
-        optimize "on"
-
-project "SandBox"
-    location "SandBox"
-    kind "ConsoleApp"
-    language "C++"
-    cppdialect "C++17"
-    staticruntime "on"
-
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
-    files
-    {
-        "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
-    }
-
-    includedirs
-    {
-        "PEngine/vendor/spdlog/include",
-        "PEngine/src",
-        "PEngine/vendor",
-        "%{IncludeDir.glm}",
-        "%{IncludeDir.entt}"
-    }
-
-    links
-    {
-        "PEngine"
-    }
-
-    filter "system:windows"
-        systemversion "latest"
-
-        defines
-        {
-            "PENGINE_PLATFORM_WINDOWS"
-        }
-
-    filter "configurations:Debug"
-        defines "PENGINE_DEBUG"
-        runtime "Debug"
-        symbols "on"
-
-    filter "configurations:Release"
-        defines "PENGINE_RELEASE"
-        runtime "Release"
-        optimize "on"
-
-    filter "configurations:Dist"
-        defines "PENGINE_DIST"
-        runtime "Release"
-        optimize "on"
-
-project "PEngine-Editor"
-    location "PEngine-Editor"
-    kind "ConsoleApp"
-    language "C++"
-    cppdialect "C++17"
-    staticruntime "on"
-
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
-    files
-    {
-        "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
-    }
-
-    includedirs
-    {
-        "PEngine/vendor/spdlog/include",
-        "PEngine/src",
-        "PEngine/vendor",
-        "%{IncludeDir.glm}"
-    }
-
-    links
-    {
-        "PEngine"
-    }
-
-    filter "system:windows"
-        systemversion "latest"
-
-        defines
-        {
-            "PENGINE_PLATFORM_WINDOWS"
-        }
-
-    filter "configurations:Debug"
-        defines "PENGINE_DEBUG"
-        runtime "Debug"
-        symbols "on"
-
-    filter "configurations:Release"
-        defines "PENGINE_RELEASE"
-        runtime "Release"
-        optimize "on"
-
-    filter "configurations:Dist"
-        defines "PENGINE_DIST"
-        runtime "Release"
-        optimize "on"
+include "PEngine"
+include "SandBox"
+include "PEngine-Editor"
