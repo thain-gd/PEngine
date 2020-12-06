@@ -2,10 +2,7 @@
 
 #include <memory>
 
-#ifdef PENGINE_PLATFORM_WINDOWS
-#else
-	#error Hazel only supports Windows!
-#endif // PENGINE_PLATFORM_WINDOWS
+#include "PEngine/Core/PlatformDetection.h"
 
 #ifdef PENGINE_DEBUG
 	#define PENGINE_ENABLE_ASSERTS
