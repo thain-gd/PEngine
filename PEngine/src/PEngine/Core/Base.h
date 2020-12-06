@@ -5,17 +5,21 @@
 #include "PEngine/Core/PlatformDetection.h"
 
 #ifdef PENGINE_DEBUG
-	#define PENGINE_ENABLE_ASSERTS
+	#if defined(PENGINE_PLATFORM_WINDOWS)
+		#define PE_DEBUGBREAK() __debugbreak()
+	#elif defined(PENGINE_PLATFORM_LINUX)
+		#include <signal.h>
+		#define PE_DEBUGBREAK() raise(SIGTRAP)
+	#else
+		#error "Platform doesn't support debugbreak yet!"
+	#endif
+		#define PE_ENABLE_ASSERTS
+	#else
+		#define PE_DEBUGBREAK()
 #endif
 
-#ifdef PENGINE_ENABLE_ASSERTS
-	#define PE_ASSERT(x, ...) { if (!(x)) { PE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-	#define PE_CORE_ASSERT(x, ...) { if (!(x)) { PE_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-#else
-	#define PE_ASSERT(x, ...)
-	#define PE_CORE_ASSERT(x, ...)
-#endif // PENGINE_ENABLED_ASSERTS
-
+#define PE_EXPAND_MACRO(x) x
+#define PE_STRINGIFY_MACRO(x) #x
 
 #define BIT(x) (1 << x)
 
@@ -39,3 +43,6 @@ namespace PEngine
 		return std::make_shared<T>(std::forward<Args>(args)...);
 	}
 }
+
+#include "PEngine/Core/Log.h"
+#include "PEngine/Core/Assert.h"
