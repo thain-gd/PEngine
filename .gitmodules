@@ -1,12 +1,15 @@
 [submodule "PEngine/vendor/spdlog"]
 	path = PEngine/vendor/spdlog
-	url = https://github.com/gabime/spdlog
+	url = ../../gabime/spdlog.git
 [submodule "PEngine/vendor/GLFW"]
 	path = PEngine/vendor/GLFW
-	url = https://github.com/TheCherno/GLFW
+	url = ../../TheCherno/GLFW.git
 [submodule "PEngine/vendor/imgui"]
 	path = PEngine/vendor/imgui
-	url = https://github.com/TheCherno/imgui
+	url = ../../TheCherno/imgui.git
 [submodule "PEngine/vendor/GLM"]
 	path = PEngine/vendor/GLM
-	url = https://github.com/g-truc/glm
+	url = ../../g-truc/glm.git
+[submodule "PEngine/vendor/yaml-cpp"]
+	path = PEngine/vendor/yaml-cpp
+	url = ../../thecherno/yaml-cpp.git
