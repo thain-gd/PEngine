@@ -9,7 +9,7 @@ namespace PEngine
 	public:
 		int GetKeyCode() { return m_KeyCode; }
 
-		EVENT_CLASS_CATEGORY(EventCategoryKeyBoard | EventCategoryInput)
+		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 
 	protected:
 		KeyEvent(int keycode)
