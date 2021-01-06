@@ -38,7 +38,7 @@ namespace PEngine
 		if (ImGui::BeginPopupContextWindow(0, 1, false))
 		{
 			if (ImGui::MenuItem("Create Empty Entity"))
-				m_Context->CreateEntity("Empty Entity");
+				m_SelectionContext = m_Context->CreateEntity("Empty Entity");
 
 			ImGui::EndPopup();
 		}
