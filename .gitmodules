@@ -13,3 +13,6 @@
 [submodule "PEngine/vendor/yaml-cpp"]
 	path = PEngine/vendor/yaml-cpp
 	url = ../../thecherno/yaml-cpp.git
+[submodule "PEngine/vendor/ImGuizmo"]
+	path = PEngine/vendor/ImGuizmo
+	url = https://github.com/thecherno/imguizmo

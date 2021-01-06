@@ -32,6 +32,8 @@ namespace PEngine {
 
 		void Close();
 
+		ImGuiLayer* GetImGuiLayer() const { return m_ImGuiLayer; }
+
 	private:
 		static Application* s_Instance;
 

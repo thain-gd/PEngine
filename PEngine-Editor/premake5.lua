@@ -19,7 +19,8 @@ project "PEngine-Editor"
 		"%{wks.location}/PEngine/src",
 		"%{wks.location}/PEngine/vendor",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.ImGuizmo}"
 	}
 
 	links
