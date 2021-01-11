@@ -1,6 +1,7 @@
 #pragma once
 
 #include "PEngine/Renderer/Camera.h"
+#include "PEngine/Renderer/EditorCamera.h"
 #include "PEngine/Renderer/OrthographicCamera.h"
 #include "PEngine/Renderer/Texture.h"
 #include "PEngine/Renderer/SubTexture2D.h"
@@ -14,6 +15,7 @@ namespace PEngine
 		static void Shutdown();
 
 		static void BeginScene(const Camera& camera, const glm::mat4& transform);
+		static void BeginScene(const EditorCamera& camera);
 		static void BeginScene(const OrthographicCamera& camera); // TODO: Remove
 		static void EndScene();
 		static void Flush();

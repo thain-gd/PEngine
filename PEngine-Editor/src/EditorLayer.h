@@ -3,6 +3,8 @@
 #include "PEngine.h"
 #include "Panels/SceneHierarchyPanel.h"
 
+#include "PEngine/Renderer/EditorCamera.h"
+
 namespace PEngine
 {
 	class EditorLayer : public Layer
@@ -50,7 +52,9 @@ namespace PEngine
 
 		int m_GizmoType = -1;
 
-		std::string currentFilepath;
+		std::string m_CurrentFilepath;
+
+		EditorCamera m_EditorCamera;
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;

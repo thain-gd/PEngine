@@ -31,6 +31,8 @@ namespace PEngine
 		m_Framebuffer = Framebuffer::Create(fbSpec);
 
 		m_ActiveScene = CreateRef<Scene>();
+
+		m_EditorCamera = EditorCamera(30.0f, 1.778f, 0.1f, 1000.0f);
 #if 0
 		auto square = m_ActiveScene->CreateEntity("Green Square");
 		square.AddComponent<SpriteRendererComponent>(glm::vec4{ 0.0f, 1.0f, 0.0f, 1.0f });
@@ -102,13 +104,16 @@ namespace PEngine
 		{
 			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
-
+			m_EditorCamera.SetViewportSize(m_ViewportSize.x, m_ViewportSize.y);
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 
 		// Update
 		if (m_ViewportFocused)
+		{
 			m_CameraController.OnUpdate(ts);
+			m_EditorCamera.OnUpdate(ts);
+		}
 
 		// Render
 		Renderer2D::ResetStats();
@@ -116,7 +121,7 @@ namespace PEngine
 		RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		RenderCommand::Clear();
 
-		m_ActiveScene->OnUpdate(ts);
+		m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
 
 		m_Framebuffer->Unbind();
 	}
@@ -193,7 +198,7 @@ namespace PEngine
 
 				if (ImGui::MenuItem("Save", "Ctrl+S"))
 				{
-					SaveScene(currentFilepath);
+					SaveScene(m_CurrentFilepath);
 				}
 
 				if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S"))
@@ -247,10 +252,15 @@ namespace PEngine
 			float windowHeight = (float)ImGui::GetWindowHeight();
 			ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
 
-			auto cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
+			// Runtime camera from entity
+			/*auto cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
 			const auto& camera = cameraEntity.GetComponent<CameraComponent>().Camera;
 			const glm::mat4& cameraProjection = camera.GetProjection();
-			glm::mat4 cameraView = glm::inverse(cameraEntity.GetComponent<TransformComponent>().GetTransform());
+			glm::mat4 cameraView = glm::inverse(cameraEntity.GetComponent<TransformComponent>().GetTransform());*/
+
+			// Editor camera
+			const glm::mat4& cameraProjection = m_EditorCamera.GetProjection();
+			glm::mat4 cameraView = m_EditorCamera.GetViewMatrix();
 
 			auto& tc = selectedEntity.GetComponent<TransformComponent>();
 			glm::mat4 transform = tc.GetTransform();
@@ -287,6 +297,7 @@ namespace PEngine
 	void EditorLayer::OnEvent(Event& e)
 	{
 		m_CameraController.OnEvent(e);
+		m_EditorCamera.OnEvent(e);
 
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<KeyPressedEvent>(PE_BIND_EVENT_FN(EditorLayer::OnKeyPressed));
@@ -318,7 +329,7 @@ namespace PEngine
 				if (shift)
 					SaveSceneAs();
 				else
-					SaveScene(currentFilepath);
+					SaveScene(m_CurrentFilepath);
 			}
 			break;
 
@@ -357,7 +368,7 @@ namespace PEngine
 			SceneSerializer serializer(m_ActiveScene);
 			serializer.Deserialize(filepath);
 
-			currentFilepath = filepath;
+			m_CurrentFilepath = filepath;
 		}
 	}
 
