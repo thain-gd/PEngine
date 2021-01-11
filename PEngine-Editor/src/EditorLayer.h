@@ -24,6 +24,7 @@ namespace PEngine
 		void NewScene();
 		void OpenScene();
 		void SaveSceneAs();
+		void SaveScene(const std::string& filepath);
 
 	private:
 		OrthographicCameraController m_CameraController;
@@ -48,6 +49,8 @@ namespace PEngine
 		glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 
 		int m_GizmoType = -1;
+
+		std::string currentFilepath;
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;

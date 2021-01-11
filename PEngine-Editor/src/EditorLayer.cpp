@@ -191,6 +191,11 @@ namespace PEngine
 					OpenScene();
 				}
 
+				if (ImGui::MenuItem("Save", "Ctrl+S"))
+				{
+					SaveScene(currentFilepath);
+				}
+
 				if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S"))
 				{
 					SaveSceneAs();
@@ -308,9 +313,12 @@ namespace PEngine
 			break;
 
 		case Key::S:
-			if (control && shift)
+			if (control)
 			{
-				SaveSceneAs();
+				if (shift)
+					SaveSceneAs();
+				else
+					SaveScene(currentFilepath);
 			}
 			break;
 
@@ -348,12 +356,19 @@ namespace PEngine
 
 			SceneSerializer serializer(m_ActiveScene);
 			serializer.Deserialize(filepath);
+
+			currentFilepath = filepath;
 		}
 	}
 
 	void EditorLayer::SaveSceneAs()
 	{
 		std::string filepath = FileDialogs::SaveFile("PEngine Scene (*.pe)\0*.pe\0");
+		SaveScene(filepath);
+	}
+
+	void EditorLayer::SaveScene(const std::string& filepath)
+	{
 		if (!filepath.empty())
 		{
 			SceneSerializer serializer(m_ActiveScene);
