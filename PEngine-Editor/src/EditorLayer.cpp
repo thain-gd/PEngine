@@ -333,6 +333,10 @@ namespace PEngine
 			}
 			break;
 
+		case Key::Delete:
+			m_SceneHierarchyPanel.RemoveSelectedEntityNode();
+			break;
+
 		// Gizmos
 		case Key::Q: // TODO: Panning Mode
 			m_GizmoType = -1;

@@ -309,4 +309,10 @@ namespace PEngine
 
 		ImGui::PopID();
 	}
+
+	void SceneHierarchyPanel::RemoveSelectedEntityNode()
+	{
+		m_Context->DestroyEntity(m_SelectionContext);
+		m_SelectionContext = {};
+	}
 }
