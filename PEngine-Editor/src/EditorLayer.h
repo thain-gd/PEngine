@@ -26,7 +26,7 @@ namespace PEngine
 		void NewScene();
 		void OpenScene();
 		void SaveSceneAs();
-		void SaveScene(const std::string& filepath);
+		void SaveScene();
 
 	private:
 		OrthographicCameraController m_CameraController;
