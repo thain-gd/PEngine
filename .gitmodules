@@ -7,9 +7,9 @@
 [submodule "PEngine/vendor/imgui"]
 	path = PEngine/vendor/imgui
 	url = ../../TheCherno/imgui.git
-[submodule "PEngine/vendor/GLM"]
-	path = PEngine/vendor/GLM
-	url = ../../g-truc/glm.git
+[submodule "PEngine/vendor/glm"]
+	path = PEngine/vendor/glm
+	url = https://github.com/g-truc/glm.git
 [submodule "PEngine/vendor/yaml-cpp"]
 	path = PEngine/vendor/yaml-cpp
 	url = ../../thecherno/yaml-cpp.git
