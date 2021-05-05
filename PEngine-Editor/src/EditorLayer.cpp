@@ -84,9 +84,6 @@ namespace PEngine
 #endif
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
-
-		/*SceneSerializer serializer(m_ActiveScene);
-		serializer.Deserialize("assets/scenes/FakeCube.pe");*/
 	}
 
 	void EditorLayer::OnDetach()
@@ -179,6 +176,23 @@ namespace PEngine
 
 		style.WindowMinSize.x = minWinSizeX;
 
+		DrawMenuBar();
+
+		m_SceneHierarchyPanel.OnImGuiRender();
+
+		DrawRendererStats();
+			
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
+		
+		DrawViewport();
+
+		ImGui::PopStyleVar();
+
+		ImGui::End();
+	}
+
+	void EditorLayer::DrawMenuBar()
+	{
 		if (ImGui::BeginMenuBar())
 		{
 			if (ImGui::BeginMenu("File"))
@@ -214,9 +228,10 @@ namespace PEngine
 
 			ImGui::EndMenuBar();
 		}
+	}
 
-		m_SceneHierarchyPanel.OnImGuiRender();
-
+	void EditorLayer::DrawRendererStats()
+	{
 		ImGui::Begin("Stats");
 
 		auto stats = Renderer2D::GetStats();
@@ -227,9 +242,13 @@ namespace PEngine
 		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 
 		ImGui::End();
-			
-		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
+	}
+
+	void EditorLayer::DrawViewport()
+	{
 		ImGui::Begin("Viewport");
+
+		auto viewportOffset = ImGui::GetCursorPos(); // Includes tab bar
 
 		// TODO: Editing tag that involves hotkeys Q, W, E, K still triggers
 		m_ViewportFocused = ImGui::IsWindowFocused();
@@ -241,14 +260,29 @@ namespace PEngine
 
 		uint64_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
 		ImGui::Image(reinterpret_cast<void*>(textureID), ImVec2{ m_ViewportSize.x, m_ViewportSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
-		
-		// Gizmos
+
+		auto windowSize = ImGui::GetWindowSize();
+		ImVec2 minBound = ImGui::GetWindowPos();
+		minBound.x += viewportOffset.x;
+		minBound.y += viewportOffset.y;
+
+		ImVec2 maxBound = { minBound.x + windowSize.x, minBound.y + windowSize.y };
+		m_ViewportBounds[0] = { minBound.x, minBound.y };
+		m_ViewportBounds[1] = { maxBound.x, maxBound.y };
+
+		DrawGizmos();
+
+		ImGui::End();
+	}
+
+	void EditorLayer::DrawGizmos()
+	{
 		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
 		if (selectedEntity && m_GizmoType != -1)
 		{
 			ImGuizmo::SetOrthographic(false);
 			ImGuizmo::SetDrawlist();
-			
+
 			float windowWidth = (float)ImGui::GetWindowWidth();
 			float windowHeight = (float)ImGui::GetWindowHeight();
 			ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
@@ -288,11 +322,6 @@ namespace PEngine
 				tc.Scale = scale;
 			}
 		}
-		
-		ImGui::End();
-		ImGui::PopStyleVar();
-
-		ImGui::End();
 	}
 
 	void EditorLayer::OnEvent(Event& e)
