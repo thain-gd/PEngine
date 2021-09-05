@@ -22,6 +22,8 @@ namespace PEngine
 
 	private:
 		bool OnKeyPressed(KeyPressedEvent& e);
+		bool OnMouseButtonPressed(MouseButtonPressedEvent& e);
+		bool CanMousePick() const;
 
 		void DrawMenuBar();
 		void DrawRendererStats();

@@ -350,6 +350,7 @@ namespace PEngine
 
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<KeyPressedEvent>(PE_BIND_EVENT_FN(EditorLayer::OnKeyPressed));
+		dispatcher.Dispatch<MouseButtonPressedEvent>(PE_BIND_EVENT_FN(EditorLayer::OnMouseButtonPressed));
 	}
 
 	bool EditorLayer::OnKeyPressed(KeyPressedEvent& e)
@@ -416,6 +417,25 @@ namespace PEngine
 		}
 
 		return true;
+	}
+
+	bool EditorLayer::OnMouseButtonPressed(MouseButtonPressedEvent& e)
+	{
+		if (e.GetMouseButton() == Mouse::ButtonLeft)
+		{
+			if (CanMousePick())
+			{
+				m_SceneHierarchyPanel.SetSelectedEntity(m_HoveredEntity);
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	bool EditorLayer::CanMousePick() const
+	{
+		return m_ViewportHovered && !ImGuizmo::IsOver() && !Input::IsKeyPressed((Key::LeftAlt));
 	}
 
 	void EditorLayer::NewScene()
