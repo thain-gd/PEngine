@@ -367,6 +367,8 @@ namespace PEngine
 		if (e.GetRepeatCount() > 0)
 			return false;
 
+		bool canGizmoTypeChange = !ImGuizmo::IsUsing();
+		
 		bool control = Input::IsKeyPressed(Key::LeftControl) || Input::IsKeyPressed(Key::RightControl);
 		bool shift = Input::IsKeyPressed(Key::LeftShift) || Input::IsKeyPressed(Key::RightShift);
 		switch (e.GetKeyCode())
@@ -397,16 +399,28 @@ namespace PEngine
 
 		// Gizmos
 		case Key::Q: // TODO: Panning Mode
-			m_GizmoType = -1;
+			if (canGizmoTypeChange)
+			{
+				m_GizmoType = -1;
+			}
 			break;
 		case Key::W:
-			m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;
+			if (canGizmoTypeChange)
+			{
+				m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;
+			}
 			break;
 		case Key::E:
-			m_GizmoType = ImGuizmo::OPERATION::ROTATE;
+			if (canGizmoTypeChange)
+			{
+				m_GizmoType = ImGuizmo::OPERATION::ROTATE;
+			}
 			break;
 		case Key::R:
-			m_GizmoType = ImGuizmo::OPERATION::SCALE;
+			if (canGizmoTypeChange)
+			{
+				m_GizmoType = ImGuizmo::OPERATION::SCALE;
+			}
 			break;
 		}
 
