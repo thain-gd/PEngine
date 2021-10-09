@@ -5,11 +5,11 @@
 
 namespace PEngine
 {
-	class PEngineEditor : public PEngine::Application
+	class PEngineEditor : public Application
 	{
 	public:
-		PEngineEditor()
-			: Application("PEngine Editor")
+		PEngineEditor(ApplicationCommandLineArgs args)
+			: Application("PEngine Editor", args)
 		{
 			PushLayer(new EditorLayer());
 		}
@@ -17,9 +17,9 @@ namespace PEngine
 		~PEngineEditor() {}
 	};
 
-	PEngine::Application* PEngine::CreateApplication()
+	Application* CreateApplication(ApplicationCommandLineArgs args)
 	{
-		return new PEngineEditor();
+		return new PEngineEditor(args);
 	}
 }
 

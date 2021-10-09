@@ -215,7 +215,8 @@ public:
 class SandBox : public PEngine::Application
 {
 public:
-	SandBox() 
+	SandBox(PEngine::ApplicationCommandLineArgs args)
+		: Application("SandBox App", args)
 	{
 		//PushLayer(new ExampleLayer());
 		PushLayer(new Sandbox2D());
@@ -224,7 +225,7 @@ public:
 	~SandBox() {}
 };
 
-PEngine::Application* PEngine::CreateApplication()
+PEngine::Application* PEngine::CreateApplication(PEngine::ApplicationCommandLineArgs args)
 {
-	return new SandBox();
+	return new SandBox(args);
 }

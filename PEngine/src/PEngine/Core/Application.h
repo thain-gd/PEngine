@@ -13,12 +13,25 @@
 
 namespace PEngine {
 
+	struct ApplicationCommandLineArgs
+	{
+		int Count = 0;
+		char** Args = nullptr;
+
+		const char* operator[](int index) const
+		{
+			PE_CORE_ASSERT(index < Count);
+			return Args[index];
+		}
+	};
+
+	
 	class Application
 	{
 	public:
 		static Application& Instance() { return *s_Instance; }
 
-		Application(const std::string& name = "PEngine App");
+		Application(const std::string& name = "PEngine App", ApplicationCommandLineArgs args = ApplicationCommandLineArgs());
 		virtual ~Application();
 
 		void Run();
@@ -28,15 +41,18 @@ namespace PEngine {
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 		
-		Window& GetWindow() { return *m_Window; }
+		Window& GetWindow() const { return *m_Window; }
 
 		void Close();
 
 		ImGuiLayer* GetImGuiLayer() const { return m_ImGuiLayer; }
 
+		ApplicationCommandLineArgs GetCommandLineArgs() const { return m_CommandLineArgs; }
+
 	private:
 		static Application* s_Instance;
 
+		ApplicationCommandLineArgs m_CommandLineArgs;
 		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
@@ -49,7 +65,7 @@ namespace PEngine {
 	};
 
 	//To be define in client
-	Application* CreateApplication();
+	Application* CreateApplication(ApplicationCommandLineArgs args);
 }
 
 

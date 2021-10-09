@@ -1,6 +1,5 @@
 # Binaries
 **/bin/
-!vendor/premake/bin/
 bin-int/
 
 # PEngine files
@@ -12,6 +11,11 @@ bin-int/
 **.vcxproj
 **.vcxproj.filters
 **.vcxproj.user
+
+# Directories
+PEngine/vendor/VulkanSDK
+PEngine-Editor/assets/cache
+scripts/__pycache__
 
 *.ini
 *PEngineProfile-*.json
